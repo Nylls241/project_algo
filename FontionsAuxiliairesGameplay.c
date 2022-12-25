@@ -17,9 +17,10 @@ int initScore(int scores[]){
     return scores;
 }
 
+//Normalement inutile car il n'y a pas de calcul intermédiaire des scores
 int updateScore(int scores[], int idJoueur, int value){
     //IdJoueur est l'id utilisé pour désigner le joueur en jeu
-    //value est la valeur positie ou négative à ajouter au score
+    //value est la valeur positive ou négative à ajouter au score
     if (idJoueur>=1 && idJoueur<=4){
         scores[idJoueur-1]=scores[idJoueur-1]+value;
     }
@@ -29,18 +30,36 @@ int updateScore(int scores[], int idJoueur, int value){
     return scores;
 }
 
-int finalScore(int scores[]){
-    int values[4];
+int finalScore(int scores[], chevalet chevalets[]){
+    int values[4]; //chacune des cases est associée à un chevalet, et par extension son joueur
+    values[0]=0;
+    values[1]=0;
+    values[2]=0;
+    values[3]=0;
     /*
     Récupérer les scores des chevalets de chaque joueur
     et les passer en négatif
     joker = -30 points
     Passer les résultats dans values
-    Le joueur ayant fini à une valeur de 0
+    Le joueur ayant fini à la somme des valeurs absolue des scores des autres joueurs
     */
-
-    for (int i=0; i<4; i++){
-        scores[i]=scores[i]+values;
+    for (int y=0; y<4; y++){
+        for (int i; i<30; i++){
+            if(chevalets[y].list[i].valeur != 14){ //on vérifie si la tuile est un joker
+                values[y]=values[y]+chevalets[y].list[i].valeur; //on récupère la valeur de la tuile et on l'ajoute à values[y]
+            }
+            else{
+                values[y]=values[y]+30; //Si la tuile est un joker elle vaut 30 points
+            }
+        }
+    }
+    for (int j=0; j<4; j++){
+        if(values[j]!=0){
+            scores[j]=scores[j]-values[j]; //les perdants ont un score négatif
+        }
+        else{
+            scores[j]=scores[j]+values[0]+values[1]+values[2]+values[3]; //le gagnant à la valeur absolue de la somme des scores des autres joueurs pour la partie
+        }
     }
 
     return scores;
@@ -48,6 +67,7 @@ int finalScore(int scores[]){
 
 void afficheScore(int scores[]){
     //affiche les scores joueur par joueur
+    //Besoins graphiques : affichage texte et tableau
 }
 
 void sauvegardeScore(int scores){
@@ -62,6 +82,7 @@ int initTour(){
 
 int nextTurn(int ot, int nbj){
     //Permet le passage au tour de jeu suivant, nbj est le nombre de joueur participant à la partie
+    //Besoins graphiques : affichage texte
     ot = ot + 1;
     ot = ot%nbj;
     return ot;
@@ -70,11 +91,13 @@ int nextTurn(int ot, int nbj){
 int isMyTurn(int t, int idJoueur){
     //permet de vérifier si c'est le tour du joueur lorsqu'il tente une action
     //l'action ne sera validée que si la condition est vraie
+    //Besoi graphique : texte pour prévenir le joueur qu'il ne peut pas jouer
     if (t == (idJoueur-1)){
         return 1;
     }
     else {
         return 0;
+        //Affiche un message demandant au joueur d'attendre son tour
     }
 }
 
@@ -96,6 +119,7 @@ typedef struct combinaison{
 
 int pioche(int nb, int idJoueur){
     //permet de piocher des tuiles depuis la réserve, généralement soit 1 ou 14
+    //Besoin graphique : tuile, animation de déplacement de tuile
     for (int i=1; i<nb; i++){
         int a = 1;
         while(a){
@@ -121,8 +145,8 @@ void initReserve(){
     }
     reserve [14-1] [1-1] = 1; //génère le joker rouge
     reserve [14-1] [2-1] = 1; //génère le joker noir
-    reserve [14-1] [1-1] = 1; //génère le joker orange
-    reserve [14-1] [2-1] = 1; //génère le de joker bleu
+    reserve [14-1] [3-1] = 1; //génère le joker orange
+    reserve [14-1] [4-1] = 1; //génère le joker bleu
 }
 
 //IA
