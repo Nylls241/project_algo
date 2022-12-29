@@ -35,7 +35,7 @@ typedef struct plateau{
 
 //Score 
 
-int initScore(int scores[]){
+int* initScore(int scores[]){
     //Prend les scores enregistrés et les mets à 0, afin de s'asssurer qu'ils soient vides en début de partie
     //les scores des 4 joueurs sont regroupés dans le tableau "scores"
     scores[0]=0;
@@ -46,7 +46,7 @@ int initScore(int scores[]){
 }
 
 //Normalement inutile car il n'y a pas de calcul intermédiaire des scores
-int updateScore(int scores[], int idJoueur, int value){
+int* updateScore(int scores[], int idJoueur, int value){
     //IdJoueur est l'id utilisé pour désigner le joueur en jeu
     //value est la valeur positive ou négative à ajouter au score
     if (idJoueur>=1 && idJoueur<=4){
@@ -58,7 +58,7 @@ int updateScore(int scores[], int idJoueur, int value){
     return scores;
 }
 
-int finalScore(int scores[], chevalet chevalets[]){
+int* finalScore(int scores[], chevalet chevalets[]){
     int values[4]; //chacune des cases est associée à un chevalet, et par extension son joueur
     values[0]=0;
     values[1]=0;
@@ -119,7 +119,7 @@ int nextTurn(int ot, int nbj){
 int isMyTurn(int t, int idJoueur){
     //permet de vérifier si c'est le tour du joueur lorsqu'il tente une action
     //l'action ne sera validée que si la condition est vraie
-    //Besoi graphique : texte pour prévenir le joueur qu'il ne peut pas jouer
+    //Besoin graphique : texte pour prévenir le joueur qu'il ne peut pas jouer
     if (t == (idJoueur-1)){
         return 1;
     }
@@ -133,11 +133,7 @@ int isMyTurn(int t, int idJoueur){
 
 //Pioche
 
-
-
-
-
-tuile pioche(int nb, int idJoueur){
+void pioche(int nb, int idJoueur){
     //permet de piocher des tuiles depuis la réserve, généralement soit 1 ou 14
     //Besoin graphique : tuile, animation de déplacement de tuile
 
@@ -154,19 +150,18 @@ tuile pioche(int nb, int idJoueur){
             }
         }
         //mettre la tuile dans le chevalet du joueur
-        tuile t;
-        t.valeur = n;
-        t.couleur = c;
-        return t;
+        //tuile t;
+        //t.valeur = n;
+        //t.couleur = c;
     }
 }
 
 void initReserve(){
     for (int n=1; n<14; n++){
         for (int c=1; c<5; c++){
-            tuile nt; //génère la tuile
+            /*tuile nt; //génère la tuile
             nt.valeur = n;
-            nt.couleur = c;
+            nt.couleur = c;*/
             reserve [n-1] [c-1] = 2; //indique que la tuile est dans la réserve en 2 exemplaires
         }
     }
