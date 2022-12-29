@@ -6,8 +6,6 @@ Les codes suivants sont pour l'instant des algorithmes qui nous permettent de d√
 
 #include <stdio.h>
 
-//fix cet include
-#include "../../../SDL-release-2.26.1/include/SDL.h"
 
 //Structures
 int reserve [15] [4]; //permet de "stocker" les tuiles, num√©ro, puis couleur
@@ -187,13 +185,3 @@ void initReserve(){
 
 
 
-//MAIN
-
-int main(void){
-
-    SDL_version nb;
-    SDL_VERSION(&nb);
-
-
-    return 0;
-}
