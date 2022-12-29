@@ -4,6 +4,34 @@ Prototypes des Fonctions de Guillaume FROMENT
 Les codes suivants sont pour l'instant des algorithmes qui nous permettent de décider du comportement du système
 */
 
+#include <stdio.h>
+
+//fix cet include
+#include "../../../SDL-release-2.26.1/include/SDL.h"
+
+//Structures
+int reserve [15] [4]; //permet de "stocker" les tuiles, numéro, puis couleur
+
+typedef struct tuile{
+    int valeur; //valeur numérique de la tuile, le 14 est le joker
+    int couleur; //couleur de la tuile : 1 = rouge, 2 = noir, 3 = orange, 4 = bleu
+} tuile;
+
+typedef struct combinaison{
+    tuile list [14]; //permet de stocker toutes les tuiles de la combinaison
+    int isValid; //permet de stocker la validité de la combinaison, qui est nécessaire pour la poser sur le chevalet
+} combinaison;
+
+//Seul un joueur peut voir son propre chevalet
+typedef struct chevalet{
+    int idJoueur; //id du joueur qui possède le chevalet
+    tuile list [30]; //contient les tuiles du chevalet
+} chevalet;
+
+//tous les joueurs peuvent voir le plateau de jeu
+typedef struct plateau{
+    combinaison list [40]; // permet de stocker les combinaisons à afficher
+} plateau;
 
 //Score 
 
@@ -105,32 +133,31 @@ int isMyTurn(int t, int idJoueur){
 
 //Pioche
 
-int reserve [15] [4]; //permet de "stocker" les tuiles, numéro, puis couleur
 
-typedef struct tuile{
-    int valeur; //valeur numérique de la tuile, le 14 est le joker
-    int couleur; //couleur de la tuile : 1 = rouge, 2 = noir, 3 = orange, 4 = bleu
-} tuile;
 
-typedef struct combinaison{
-    tuile list [14]; //permet de stocker toutes les tuiles de la combinaison
-    int isValid; //permet de stocker la validité de la combinaison, qui est nécessaire pour la poser sur le chevalet
-} combinaison;
 
-int pioche(int nb, int idJoueur){
+
+tuile pioche(int nb, int idJoueur){
     //permet de piocher des tuiles depuis la réserve, généralement soit 1 ou 14
     //Besoin graphique : tuile, animation de déplacement de tuile
+
     for (int i=1; i<nb; i++){
+        int n;
+        int c;
         int a = 1;
         while(a){
-            int n = rand()%14+1; //permet d'obtenir un numéro de tuile
-            int c = rand()%4+1; //permet d'obtenir une couleur de tuile
+            n = rand()%14+1; //permet d'obtenir un numéro de tuile
+            c = rand()%4+1; //permet d'obtenir une couleur de tuile
             if (reserve [n-1] [c-1] > 0){ //si la tuile est dans la réserve, pour éviter les duplicatas
                 a=0;
                 reserve [n-1] [c-1] = reserve [n-1] [c-1] -1; //on enlève la tuile de la réserve
             }
         }
         //mettre la tuile dans le chevalet du joueur
+        tuile t;
+        t.valeur = n;
+        t.couleur = c;
+        return t;
     }
 }
 
@@ -156,17 +183,22 @@ void initReserve(){
 
 //Chevalets
 
-//Seul un joueur peut voir son propre chevalet
-typedef struct chevalet{
-    int idJoueur; //id du joueur qui possède le chevalet
-    tuile list [30]; //contient les tuiles du chevalet
-} chevalet;
+
 
 
 
 //Plateau de Jeu
 
-//tous les joueurs peuvent voir le plateau de jeu
-typedef struct plateau{
-    combinaison list [40]; // permet de stocker les combinaisons à afficher
-} plateau;
+
+
+
+//MAIN
+
+int main(void){
+
+    SDL_version nb;
+    SDL_VERSION(&nb);
+
+
+    return 0;
+}
