@@ -41,7 +41,7 @@ void initSDL(void)
 
 	}
 }
-/*SDL_ErrorQuit affiche un massage d'erreur , fait appel à la fonction SDL_GetError pour spécifier l'erreur , ensuite appel la fonction SDL_Quit pour quitter la SDL et enfin renvoie -1 et quitte le programme , cette fonction permet gerer les erreurs d'initialisation */
+/*SDL_ErrorQuit affiche un massage d'erreur , puis fait appel à la fonction SDL_GetError pour spécifier l'erreur , ensuite appel la fonction SDL_Quit pour quitter la SDL et enfin renvoie -1 et quitte le programme , cette fonction permet gerer les erreurs d'initialisation */
 
 int SDL_ErrorQuit(const char *message)
 {
