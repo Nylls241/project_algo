@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "init.h"
 #include "SDL.h"
 #include "defs.h"
@@ -13,27 +14,27 @@ void initSDL(void)
 
          app.rendu = NULL ;
 
-	int renduFlags, app.fenetreFlags ;
+	int renduFlags, fenetreFlags ;//Commente
 
-	renduFlags = SDL_RENDERER_ACCELERATED;
+	renduFlags = SDL_RENDERER_ACCELERATED;//commente
 
 	fenetreFlags = 0;
 
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)//commente
 	{
-		 SDL_ErrorQuit(" initialisation de la SDL\n") ;
+		 SDL_ErrorQuit(" initialisation de la SDL\n") ;//Commente
 	}
 
-	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);
+	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);//Commente
 
 	if (app.fentre == NULL)
 	{
 		 SDL_ErrorQuit("création de la fenêtre\n") ;
 	}
 
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");//Commente
 
-	app.rendu = SDL_CreateRenderer(app.fenetre, -1, renduFlags);
+	app.rendu = SDL_CreateRenderer(app.fenetre, -1, renduFlags);//Commente
 
 	if (app.rendu == NULL)
 	{

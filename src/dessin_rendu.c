@@ -1,6 +1,9 @@
 #include "SDL.h"
 #include "structures.h"
 #include "init_draw"
+#include <stdlib.h>
+#include <stdio.h>
+
 
 void prepareScene(void)
 {

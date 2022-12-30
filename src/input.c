@@ -1,5 +1,6 @@
 #include "SDL.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 
 void doInput(void)
 {
@@ -10,7 +11,6 @@ void doInput(void)
 		switch (event.type)
 		{
 			case SDL_QUIT:
-				exit(0);
 				break;
 
 			default:
