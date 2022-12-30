@@ -1,12 +1,13 @@
 #ifndef STRUCTS.H
 #define  STRUCTS.H
 
+//Structures rédigées par Nylls Gersan BOUTOTO :
 typedef struct {
 	SDL_Renderer *rendu;
 	SDL_Window *fenetre;
 } App;
-//Nylls Gersan BOUTOTO
 
+//Structures rédigées par Guillaume FROMENT :
 typedef struct tuile{
     int valeur; //valeur numérique de la tuile, le 14 est le joker
     int couleur; //couleur de la tuile : 1 = rouge, 2 = noir, 3 = orange, 4 = bleu
@@ -27,7 +28,6 @@ typedef struct chevalet{
 typedef struct plateau{
     combinaison list [40]; // permet de stocker les combinaisons à afficher
 } plateau;
-//Guillaume FROMENT
 
 
 
