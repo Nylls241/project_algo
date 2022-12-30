@@ -9,11 +9,11 @@
 
 void initSDL(void)
 {
-	  SDL_Window *fenetre = NULL ;
+	 app.fenetre == NULL ;
 
-        SDL_Renderer *rendu = NULL ;
+         app.rendu = NULL ;
 
-	int renduFlags, fenetreFlags ;
+	int renduFlags, app.fenetreFlags ;
 
 	renduFlags = SDL_RENDERER_ACCELERATED;
 
@@ -24,18 +24,18 @@ void initSDL(void)
 		 SDL_ErrorQuit(" initialisation de la SDL\n") ;
 	}
 
-	fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);
+	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);
 
-	if (fentre == NULL)
+	if (app.fentre == NULL)
 	{
 		 SDL_ErrorQuit("création de la fenêtre\n") ;
 	}
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
-	rendu = SDL_CreateRenderer(fenetre, -1, renduFlags);
+	app.rendu = SDL_CreateRenderer(app.fenetre, -1, renduFlags);
 
-	if (rendu == NULL)
+	if (app.rendu == NULL)
 	{
 		SDL_ErrorQuit("création rendu\n ") ;
 
