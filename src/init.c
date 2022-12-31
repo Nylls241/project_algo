@@ -5,9 +5,11 @@
 
 void initSDL(void)
 {
-	 app.fenetre == NULL ;
+	application app;
 
-         app.rendu = NULL ;
+	app.fenetre = NULL ;
+
+    app.rendu = NULL ;
 
 	int renduFlags, fenetreFlags ;//Commente
 

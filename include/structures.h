@@ -5,7 +5,7 @@
 typedef struct {
 	SDL_Renderer *rendu;
 	SDL_Window *fenetre;
-} app;
+} application;
 
 //Structures rédigées par Guillaume FROMENT :
 typedef struct tuile{
