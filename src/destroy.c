@@ -1,6 +1,6 @@
 #include "../include/include.h"
 
-void destroySDL(void)
+void destroySDL(application app)
 {
         SDL_DestroyRenderer(app.rendu) ; // Detruit le rendu 
 
