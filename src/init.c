@@ -24,7 +24,7 @@ application initSDL(void)
 
 	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);//Commente
 
-	if (app.fentre == NULL)
+	if (app.fenetre == NULL)
 	{
 		 SDL_ErrorQuit("création de la fenêtre\n") ;
 	}

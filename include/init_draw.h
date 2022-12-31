@@ -1,10 +1,10 @@
 #ifndef INIT_DRAW_H
 #define INIT_DRAW_H
 
-void doInput(void);
+void Input(void);
 int SDL_ErrorQuit(const char *message) ;
-void initSDL(void) ;
-void prepareScene(void) ;
-void presentScene(void) ; 
+application prepareScene(application app) ;
+void presentScene(application app) ;
+application initSDL(void) ;
 
 #endif 
