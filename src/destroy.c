@@ -1,6 +1,4 @@
-#include "SDL.h"
-#include "init_draw.h"
-#include "structures.h"
+#include "../include/include.h"
 
 void destroySDL(void)
 {

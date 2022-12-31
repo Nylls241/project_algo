@@ -1,9 +1,4 @@
-#include "SDL.h"
-#include "structures.h"
-#include "init_draw"
-#include <stdlib.h>
-#include <stdio.h>
-
+#include "../include/include.h"
 
 void prepareScene(void)
 {

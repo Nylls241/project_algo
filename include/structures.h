@@ -1,11 +1,11 @@
-#ifndef STRUCTS.H
-#define  STRUCTS.H
+#ifndef STRUCTS_H
+#define  STRUCTS_H
 
 //Structures rédigées par Nylls Gersan BOUTOTO :
 typedef struct {
 	SDL_Renderer *rendu;
 	SDL_Window *fenetre;
-} App;
+} app;
 
 //Structures rédigées par Guillaume FROMENT :
 typedef struct tuile{

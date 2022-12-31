@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "SDL.h"
-#include "defs.h"
-#include "structures.h"
-#include "init_draw.h"
-
-#include "destroy.h"
-
+#include "../include/include.h"
 
 int main(void) 
 {
@@ -16,5 +8,5 @@ int main(void)
 	presentScene() ;
 	destroySDL() ;
 
-	return  ;
+	return 0 ;
 }
