@@ -1,6 +1,7 @@
 #include "SDL.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "init_draw.h"
 
 void doInput(void)
 {

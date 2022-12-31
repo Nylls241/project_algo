@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "init.h"
+#include "init_draw.h"
 #include "SDL.h"
 #include "defs.h"
-
+#include "structures.h"
 
 
 /*initSDL Initialise  la SDL , Crée et affiche une fenêtre et enfin  Crée un rendu */
