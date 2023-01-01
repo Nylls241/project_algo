@@ -4,7 +4,7 @@ Prototypes des Fonctions de Guillaume FROMENT
 Les codes suivants sont pour l'instant des algorithmes qui nous permettent de décider du comportement du système
 */
 
-#include <stdio.h>
+#include "../include/include.h"
 
 
 //Structures
