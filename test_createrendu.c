@@ -25,6 +25,16 @@ int main (void)
 		
 	rendu = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE) ;
 
+	SDL_SetRenderDrawColor(rendu , 96 , 128 ,255 ,255) ;
+	SDL_Rect rect ;
+
+        rect.x = 300 ;
+        rect.y = 300 ;
+        rect.w =200 ;
+        rect.h = 120 ;
+
+	SDL_RenderDrawRect(rendu , &rect) ;
+
 	if (rendu == NULL) 
 		SDL_ErrorQuit("création rendu ") ;
 
