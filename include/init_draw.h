@@ -3,8 +3,8 @@
 
 void Input(void);
 int SDL_ErrorQuit(const char *message) ;
-application prepareScene(application app) ;
-void presentScene(application app) ;
+void prepareScene(application app) ;
+void presentScene(application app ) ;
 application initSDL(void) ;
 
 #endif 

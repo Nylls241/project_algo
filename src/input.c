@@ -1,23 +1,24 @@
 #include "../include/include.h"
 
-void doInput(void)
+void Input(void)
 {
-	SDL_bool program_launched = SDL_TRUE
-	while(program_launched)
+	SDL_bool programm = SDL_TRUE ;
+
+
+	while (programm) 
 	{
-		SDL_Event event;
+		SDL_Event event ;
 
-		while (SDL_PollEvent(&event))
-		{	
-			switch (event.type)
-			{	
+		while(SDL_PollEvent(&event)) 
+		{
+			switch(event.type)
+			{
 				case SDL_QUIT:
-					 program_launched = SDL_FALSE ;
-					 break;
-
+					programm = SDL_FALSE ;
+					break ;
 				default:
-					break;
+					break ;
 			}
-		}	
-	}	
+		}
+	}
 }
