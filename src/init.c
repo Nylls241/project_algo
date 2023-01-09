@@ -1,7 +1,7 @@
 #include"../include/include.h"
 
 
-/*initSDL Initialise  la SDL , Crée et affiche une fenêtre et enfin  Crée un rendu */
+/*La fonction initSDL Initialise  la SDL , Crée et renvoie une fenêtre et un rendu */
 
 application initSDL(void)
 {
@@ -12,29 +12,44 @@ application initSDL(void)
 
 	app.rendu = NULL ;
 
-	int renduFlags, fenetreFlags ;//Commente
+	int renduFlags, fenetreFlags ;
 
-	renduFlags = SDL_RENDERER_ACCELERATED;//commente
+	renduFlags = SDL_RENDERER_ACCELERATED;
 
 	fenetreFlags = 0;
 /*-------------------------------------------------------------------------------------------------*/
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)//commente
+/*SDL_Init initialise la bibliothèque SDL et prend en paramètre un ou plusieurs sous systèmes (Flags) . Ici , il prend en paramètre SDL_INIT_VIDEO qui charge le système vidéo (affichage) + événements*/
+
+
+	if (SDL_Init(SDL_INIT_VIDEO) != 0)//  renvoie  un autre nombre que 0 si l'initialisation n'a pas marché.
 	{
-		 SDL_ErrorQuit(" initialisation de la SDL\n") ;//Commente
+		 SDL_ErrorQuit(" initialisation de la SDL\n") ;//Gestion d'erreur 
 	}
+	
 /*-------------------------------------------------------------------------------------------------*/
-	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);//Commente
+/*La fonction SDL_CreateWindow Crée une fenêtre avec la position les dimensions et les drapeaux (Flags) spécifiés qu'on stocke dans la variable app.fenetre */ 
 
-	if (app.fenetre == NULL)
+	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);/*Les paramètres : le titre de la fenêtre (ici RUMMIKUB) codé en UTF-8 , ensuite , la position en x ,  et la position en y de la fenêtre représenté ici par le flag SDL_WINDOWPOS_CENTERED qui va centrer la fenêtre, puis la largeur et la hauteur de la fenêtre et enfin le 0 pour rendre la fenêtre visible .*/
+
+        if  (app.fenetre == NULL)//Renvoie NULL si la fenetre n'a pas été créé .
 	{
-		 SDL_ErrorQuit("création de la fenêtre\n") ;
+		 SDL_ErrorQuit("création de la fenêtre\n") ;//Gestion d'erreur 
 	}
 
-	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");//Commente
+	/*SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");*/
+
+/*-------------------------------------------------------------------------------------------------*/
+/* La fonction SDL_CreateRenderer crée un contexte de rendu 2D pour une fenêtre.Qu'on stocke dans app.rendu  */
+ 
+	app.rendu = SDL_CreateRenderer(app.fenetre, -1, renduFlags);/*les paramètres :la fenêtre où le rendu est affiché, -1 pour initialiser le premier supportant les flags demandés,et le flag SDL_RENDERER_ACCELERATED qui utilise  le moteur de rendu  l'accélération matérielle*/
 
 
 
-	app.rendu = SDL_CreateRenderer(app.fenetre, -1, renduFlags);//Commente
+	if (app.rendu == NULL)//Renvoie NULL s'il y a eu une erreur
+	{
+		SDL_ErrorQuit("création du rendu  \n") ;//Gestion d'erreur 
+	}
+								    
 	
 	return app ;
 	
