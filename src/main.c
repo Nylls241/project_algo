@@ -3,9 +3,9 @@
 int main(void) 
 {
  	application app = initSDL() ;
-	Input() ;
 	prepareScene(app) ;
 	presentScene(app) ; 
+	Input() ;
 	destroySDL(app);
 	return 0 ;
 }

@@ -20,6 +20,6 @@ void Input(void)
 					programm = SDL_FALSE ;
 					break ;
 				default:
-					break ;
-			}
+			}		break ;
+	}	}
 }
