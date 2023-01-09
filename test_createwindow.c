@@ -23,7 +23,27 @@ int main (void)
 		
 
 
-	SDL_Delay(6000) ;// 6 secondes d'affichages
+//	SDL_Delay(6000) ;// 6 secondes d'affichages
+ SDL_bool programm = SDL_TRUE ;
+
+
+        while (programm)
+        {
+                SDL_Event event ;
+
+                while(SDL_PollEvent(&event))
+                {
+                        switch(event.type)
+                        {
+                                case SDL_QUIT:
+                                        programm = SDL_FALSE ;
+                                        break ;
+                                default:
+                                        break ;
+                        }
+                }
+        }
+
 
 
 

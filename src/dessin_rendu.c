@@ -16,3 +16,5 @@ void presentScene(application app )
 	SDL_RenderPresent(app.rendu);
 }
 /*-------------------------------------------------------------------------------------------------*/
+
+// Rediger par Nylls Gersan BOUTOTO

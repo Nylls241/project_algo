@@ -3,8 +3,9 @@
 
 //Structures rédigées par Nylls Gersan BOUTOTO :
 typedef struct {
-	SDL_Renderer *rendu;
-	SDL_Window *fenetre;
+	SDL_Renderer *rendu;// pointeur pour le rendu 
+	SDL_Window *fenetre;// pointeur pour la fenêtre
+			    
 } application;
 
 //Structures rédigées par Guillaume FROMENT :

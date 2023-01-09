@@ -1,5 +1,7 @@
 #include "../include/include.h"
 
+/* La fonction destroy libère la mémoire propement , pour ne pas avoir des fuites de mémoire */
+
 void destroySDL(application app)
 {
         SDL_DestroyRenderer(app.rendu) ; // Detruit le rendu 
