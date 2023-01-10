@@ -90,6 +90,11 @@ int nextTurn(int ot, int nbj){
     //Besoins graphiques : affichage texte
     ot = ot + 1;
     ot = ot%nbj;
+
+    //affichage message pour confirmer le changement de tour
+
+    /*gestion event*/
+
     return ot;
 }
 
@@ -130,6 +135,8 @@ void pioche(int nb, int idJoueur){
         //tuile t;
         //t.valeur = n;
         //t.couleur = c;
+
+        
     }
 }
 
