@@ -8,6 +8,35 @@
 	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
 	
 }
+void construit(dessin des ,int x, int y,application app)
+{
+	des.image = NULL ;
+	des.texture = NULL ;
+
+	image = IMG_Load("../image/plateau.bmp");
+	
+	if (image == NULL) 
+	{
+		Detruit(app) ; 
+		SDL_ErrorQuit("echec chargement image \n") ;
+
+	}
+	des.texture = SDL_CreateTextureFromSurface(app.rendu , des.image) ;
+
+	if (texture == NULL)
+	{
+		Detruit(app) ;
+                SDL_ErrorQuit("echec chargement image \n") ;
+	}
+
+	SDL_Rect rectangle ;
+
+	rectangle.x = x;
+	rectangle.y = y;
+	SDL_QueryTexture(des.texture, NULL, NULL, &rectangle.w, &rectangle) ;
+
+	SDL_RenderCopy(app.renderer, des.texture, NULL, &rectangle);
+}
 /*-------------------------------------------------------------------------------------------------*/
 /*presentScene affiche le rendu qui prend un seul paramètre (ici app) . SDL_RenderPresent nous prensente le rendu */
 

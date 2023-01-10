@@ -5,7 +5,7 @@ int main(void)
  	application app = initSDL() ;
 	prepareScene(app) ;
 	presentScene(app) ; 
-	Input() ;
+	input() ;
 	destroySDL(app);
 	return 0 ;
 }
