@@ -30,10 +30,7 @@ typedef struct plateau{
     combinaison list [40]; // permet de stocker les combinaisons à afficher
 } plateau;
 
-typedef struct dessin {
-    SDL_Surface *image;
-    SDL_Texture *texture;
-} dessin;
+
 
 
 
