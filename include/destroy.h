@@ -3,6 +3,7 @@
 
 void  destroySDL(application app ) ; 
 
+void detruit(application app) ;
 
 
 #endif 

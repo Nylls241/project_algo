@@ -7,42 +7,61 @@
 	SDL_SetRenderDrawColor(app.rendu, 96, 128, 255, 255);
 	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
 	
-}
-void construit(dessin des ,int x, int y,application app)
-{
-	des.image = NULL ;
-	des.texture = NULL ;
 
-	image = IMG_Load("../image/plateau.bmp");
+}
+
+SDL_Rect  encadre(int x , int y , int w ,int h) 
+{
+	SDL_Rect rectangle ; 
+
+	rectangle.x = x ;
+	rectangle.y = y ;
+	rectangle.w = w ;
+	rectangle.h = h ; 
+
+	return rectangle  ;
+
+}
+
+
+void CreeTexture(application app ) // image = IMG_Load(source) 
+{
+	SDL_Texture *texture = NULL ; 
+	SDL_Surface *image = NULL ; 
+
+	image = SDL_LoadBMP("../image/plateau.bmp") ;
 	
-	if (image == NULL) 
+	if (image == NULL) // Gestion d'erreur 
 	{
-		Detruit(app) ; 
+		detruit(app) ; 
 		SDL_ErrorQuit("echec chargement image \n") ;
 
 	}
-	des.texture = SDL_CreateTextureFromSurface(app.rendu , des.image) ;
 
-	if (texture == NULL)
+	texture = SDL_CreateTextureFromSurface(app.rendu , image) ;//Création de la texture à partir de la surface .
+	
+//	SDL_FreeSurface(image) ; 
+
+	if (texture == NULL)// Gestion d'erreur 
 	{
-		Detruit(app) ;
-                SDL_ErrorQuit("echec chargement image \n") ;
+		detruit(app) ;
+                SDL_ErrorQuit("echec chargement texture \n") ;
 	}
 
-	SDL_Rect rectangle ;
+	SDL_Rect rectangle = encadre (0,0,SCREEN_WIDTH,SCREEN_HEIGHT) ; 
 
-	rectangle.x = x;
-	rectangle.y = y;
-	SDL_QueryTexture(des.texture, NULL, NULL, &rectangle.w, &rectangle) ;
+	SDL_QueryTexture(texture, NULL, NULL, &rectangle.w, &rectangle.h) ; //Charge la texture avec les dimmensions(wigth, hight) 
 
-	SDL_RenderCopy(app.renderer, des.texture, NULL, &rectangle);
+	SDL_RenderCopy(app.rendu, texture, NULL, &rectangle); // Colle la texture ayant pour cadre (rectangle) sur le rendu 
+
 }
+/**/
 /*-------------------------------------------------------------------------------------------------*/
 /*presentScene affiche le rendu qui prend un seul paramètre (ici app) . SDL_RenderPresent nous prensente le rendu */
 
 void presentScene(application app )
 {
-	SDL_RenderPresent(app.rendu);
+	SDL_RenderPresent(app.rendu);// affiche le rendu sur la fenêtre ... 
 }
 /*-------------------------------------------------------------------------------------------------*/
 
