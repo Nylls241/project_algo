@@ -10,18 +10,7 @@
 
 }
 
-SDL_Rect  encadre(int x , int y , int w ,int h) 
-{
-	SDL_Rect rectangle ; 
-
-	rectangle.x = x ;
-	rectangle.y = y ;
-	rectangle.w = w ;
-	rectangle.h = h ; 
-
-	return rectangle  ;
-
-}
+	}
 
 
 void CreeTexture(application app ) // image = IMG_Load(source) 
@@ -30,7 +19,7 @@ void CreeTexture(application app ) // image = IMG_Load(source)
 	SDL_Surface *image = NULL ; 
 
 	image = SDL_LoadBMP("../image/plateau.bmp") ;
-	
+
 	if (image == NULL) // Gestion d'erreur 
 	{
 		detruit(app) ; 
@@ -40,7 +29,7 @@ void CreeTexture(application app ) // image = IMG_Load(source)
 
 	texture = SDL_CreateTextureFromSurface(app.rendu , image) ;//Création de la texture à partir de la surface .
 	
-//	SDL_FreeSurface(image) ; 
+	SDL_FreeSurface(image) ; 
 
 	if (texture == NULL)// Gestion d'erreur 
 	{
@@ -48,7 +37,9 @@ void CreeTexture(application app ) // image = IMG_Load(source)
                 SDL_ErrorQuit("echec chargement texture \n") ;
 	}
 
-	SDL_Rect rectangle = encadre (0,0,SCREEN_WIDTH,SCREEN_HEIGHT) ; 
+	SDL_Rect rectangle ; 
+	rectangle.x = 0 :
+	rectangle.y = 0 ;
 
 	SDL_QueryTexture(texture, NULL, NULL, &rectangle.w, &rectangle.h) ; //Charge la texture avec les dimmensions(wigth, hight) 
 

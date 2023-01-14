@@ -8,6 +8,8 @@ void destroySDL(application app)
 
         SDL_DestroyWindow(app.fenetre) ; //Detruit la fenêtre 
 
+	SDL_DestroyTexture(texture) ; 
+
         SDL_Quit() ; // Quitte la SDL
 
 }
