@@ -6,45 +6,38 @@
 {
 	SDL_SetRenderDrawColor(app.rendu, 96, 128, 255, 255);
 	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
-	
 
-}
-
-	}
-
-
-void CreeTexture(application app ) // image = IMG_Load(source) 
-{
-	SDL_Texture *texture = NULL ; 
 	SDL_Surface *image = NULL ; 
+	SDL_Texture *texture = NULL ; 
 
-	image = SDL_LoadBMP("../image/plateau.bmp") ;
+	image = SDL_LoadBMP("../images/plateau.bmp") ;// on charge la surface(image) 
 
-	if (image == NULL) // Gestion d'erreur 
+	if (image == NULL) //  On vérifie que l'image a été chargé
 	{
 		detruit(app) ; 
 		SDL_ErrorQuit("echec chargement image \n") ;
 
 	}
 
-	texture = SDL_CreateTextureFromSurface(app.rendu , image) ;//Création de la texture à partir de la surface .
+	texture = SDL_CreateTextureFromSurface(app.rendu , image) ;//Création de la texture à partir de la surface sur  app.rendu.
 	
-	SDL_FreeSurface(image) ; 
+	SDL_FreeSurface(image) ; // on libère la surface , vu qu'on a déjà chargé l'image(surface) dans la texture.On en a plus besoin .
 
-	if (texture == NULL)// Gestion d'erreur 
+	if (texture == NULL)//On vérifie que la texture a bien été crée 
 	{
 		detruit(app) ;
                 SDL_ErrorQuit("echec chargement texture \n") ;
 	}
 
-	SDL_Rect rectangle ; 
-	rectangle.x = 0 :
-	rectangle.y = 0 ;
+	SDL_Rect rectangle ; //On créé le rectangle qui servira de cadre pour notre texture .
 
-	SDL_QueryTexture(texture, NULL, NULL, &rectangle.w, &rectangle.h) ; //Charge la texture avec les dimmensions(wigth, hight) 
+	SDL_QueryTexture(texture, NULL, NULL, &rectangle.w, &rectangle.h) ; //Charge la texture en mémoire avec les dimmensions(wigth, hight) 
 
-	SDL_RenderCopy(app.rendu, texture, NULL, &rectangle); // Colle la texture ayant pour cadre (rectangle) sur le rendu 
+	rectangle.x = 0 ;//positon en x de la texture sur la fenêtre 
+	rectangle.y = 0 ;//Position en y de la texture sur la fenêtre
 
+
+	SDL_RenderCopy(app.rendu, texture, NULL, &rectangle); // Colle la texture ayant pour cadre (rectangle) sur app.rendu 
 }
 /**/
 /*-------------------------------------------------------------------------------------------------*/
