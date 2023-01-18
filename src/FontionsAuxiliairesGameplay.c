@@ -8,7 +8,7 @@ Les codes suivants sont pour l'instant des algorithmes qui nous permettent de d�
 
 
 //Structures
-int reserve [15] [4]; //permet de "stocker" les tuiles, numéro, puis couleur
+int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
 
 //Score 
 
@@ -146,13 +146,13 @@ void initReserve(){
             /*tuile nt; //génère la tuile
             nt.valeur = n;
             nt.couleur = c;*/
-            reserve [n-1] [c-1] = 2; //indique que la tuile est dans la réserve en 2 exemplaires
+            reserve [n-1] [c] = 2; //indique que la tuile est dans la réserve en 2 exemplaires
         }
     }
-    reserve [14-1] [1-1] = 1; //génère le joker rouge
-    reserve [14-1] [2-1] = 1; //génère le joker noir
-    reserve [14-1] [3-1] = 1; //génère le joker orange
-    reserve [14-1] [4-1] = 1; //génère le joker bleu
+    reserve [14-1] [1] = 1; //génère le joker rouge
+    reserve [14-1] [2] = 1; //génère le joker vert
+    reserve [14-1] [3] = 1; //génère le joker orange
+    reserve [14-1] [4] = 1; //génère le joker bleu
 }
 
 //IA
