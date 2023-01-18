@@ -6,22 +6,23 @@
 {
 	SDL_SetRenderDrawColor(app.rendu, 96, 128, 255, 255);
 	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
+}
+/**/
+application dessine_plateau(app)  
 
-	SDL_Surface *image = NULL ; 
+{
 	SDL_Texture *texture = NULL ; 
 
-	image = SDL_LoadBMP("../images/plateau.bmp") ;// on charge la surface(image) 
-
-	if (image == NULL) //  On vérifie que l'image a été chargé
+	if (app.image == NULL) //  On vérifie que l'app.image a été chargé
 	{
 		detruit(app) ; 
-		SDL_ErrorQuit("echec chargement image \n") ;
+		SDL_ErrorQuit("echec chargement app.image \n") ;
 
 	}
 
-	texture = SDL_CreateTextureFromSurface(app.rendu , image) ;//Création de la texture à partir de la surface sur  app.rendu.
+	texture = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la texture à partir de la surface sur  app.rendu.
 	
-	SDL_FreeSurface(image) ; // on libère la surface , vu qu'on a déjà chargé l'image(surface) dans la texture.On en a plus besoin .
+	SDL_FreeSurface(app.image) ; // on libère la surface , vu qu'on a déjà chargé l'app.image(surface) dans la texture.On en a plus besoin .
 
 	if (texture == NULL)//On vérifie que la texture a bien été crée 
 	{
@@ -38,8 +39,11 @@
 
 
 	SDL_RenderCopy(app.rendu, texture, NULL, &rectangle); // Colle la texture ayant pour cadre (rectangle) sur app.rendu 
+
+	return(app) ; 
 }
-/**/
+
+
 /*-------------------------------------------------------------------------------------------------*/
 /*presentScene affiche le rendu qui prend un seul paramètre (ici app) . SDL_RenderPresent nous prensente le rendu */
 

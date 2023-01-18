@@ -6,12 +6,18 @@
 application initSDL(void)
 {
 /*-------------------------------------------------------------------------------------------------*/
+//Initialisation des variables de la structure application 
+
 	application app ;
+
+	app.texture = NULL ;
+
+	app.image = NULL ;
 
 	app.fenetre = NULL ;
 
 	app.rendu = NULL ;
-
+//
 	int renduFlags, fenetreFlags ;
 
 	renduFlags = SDL_RENDERER_ACCELERATED;
