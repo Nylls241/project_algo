@@ -2,14 +2,14 @@
 
 /*-------------------------------------------------------------------------------------------------*/
 /*prepareScene traite la préparation du rendu,on configure la couleur du rendu avec SDL_SetRenderDrawColor.cette fonction prend 5 paramètre : le pointer qu'on a créé dans init.c et le taux de couleur pour former une couleur (dans notre 96,128,et 255 pour former le bleu :) et 255 pour opaque */
- void prepareScene(application app)
+void prepareScene(application app)
 {
 	SDL_SetRenderDrawColor(app.rendu, 96, 128, 255, 255);
 	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
+	application app = dessine_plateau(app) ;
 }
 /**/
-application dessine_plateau(app)  
-
+application dessine_plateau(application app)  
 {
 	SDL_Texture *texture = NULL ; 
 
@@ -40,7 +40,7 @@ application dessine_plateau(app)
 
 	SDL_RenderCopy(app.rendu, texture, NULL, &rectangle); // Colle la texture ayant pour cadre (rectangle) sur app.rendu 
 
-	return(app) ; 
+	return (app) ; 
 }
 
 
