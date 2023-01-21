@@ -5,19 +5,19 @@
  
 void input(void)
 {
-	SDL_bool programm = SDL_TRUE ;
+	SDL_bool programm_lancer = SDL_TRUE ;
 
 
-	while (programm) 
+	while (programm_lancer) 
 	{
-		SDL_Event event ;
+		SDL_Event evenements ;
 
-		while(SDL_PollEvent(&event)) 
+		while(SDL_PollEvent(&evenements)) 
 		{
-			switch(event.type)
+			switch(evenements.type)
 			{
 				case SDL_QUIT:
-					programm = SDL_FALSE ;
+					programm_lancer = SDL_FALSE ;
 					break ;
 				default:
 			}		break ;
