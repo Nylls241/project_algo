@@ -11,7 +11,7 @@ typedef struct {
 //Structures rédigées par Guillaume FROMENT :
 typedef struct tuile{
     int valeur; //valeur numérique de la tuile, le 14 est le joker
-    int couleur; //couleur de la tuile : 1 = rouge, 2 = noir, 3 = orange, 4 = bleu
+    int couleur; //couleur de la tuile : 1 = rouge, 2 = vert, 3 = orange, 4 = bleu
 } tuile;
 
 typedef struct combinaison{

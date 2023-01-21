@@ -6,12 +6,29 @@ Les codes suivants sont pour l'instant des algorithmes qui nous permettent de d�
 
 #include "../include/include.h"
 
+void print_tuile(tuile t){
+    printf("%d\n", t.valeur);
+    if (t.couleur == 0){
+        printf("test\n");
+    }
+    else if (t.couleur == 1){
+        printf("rouge\n");
+    }
+    else if (t.couleur == 2){
+        printf("vert\n");
+    }
+    else if (t.couleur == 3){
+        printf("orange\n");
+    }
+    else if (t.couleur == 4){
+        printf("bleu\n");
+    }
+}
 
 //Structures
-int reserve [15] [4]; //permet de "stocker" les tuiles, numéro, puis couleur
+int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
 
 //Score 
-
 int* initScore(int scores[]){
     //Prend les scores enregistrés et les mets à 0, afin de s'asssurer qu'ils soient vides en début de partie
     //les scores des 4 joueurs sont regroupés dans le tableau "scores"
@@ -115,29 +132,43 @@ int isMyTurn(int t, int idJoueur){
 
 //Pioche
 
-void pioche(int nb, int idJoueur){
+chevalet pioche(int nb, chevalet c){
     //permet de piocher des tuiles depuis la réserve, généralement soit 1 ou 14
     //Besoin graphique : tuile, animation de déplacement de tuile
-
-    for (int i=1; i<nb; i++){
+    int y=0;
+    for (int i=1; i<=nb; i++){
         int n;
-        int c;
+        int couleur;
         int a = 1;
         while(a){
             n = rand()%14+1; //permet d'obtenir un numéro de tuile
-            c = rand()%4+1; //permet d'obtenir une couleur de tuile
-            if (reserve [n-1] [c-1] > 0){ //si la tuile est dans la réserve, pour éviter les duplicatas
+            couleur = rand()%4+1; //permet d'obtenir une couleur de tuile
+            if (reserve [n-1] [couleur-1] > 0){ //si la tuile est dans la réserve, pour éviter les duplicatas
                 a=0;
-                reserve [n-1] [c-1] = reserve [n-1] [c-1] -1; //on enlève la tuile de la réserve
+                reserve [n-1] [couleur-1] = reserve [n-1] [couleur-1] -1; //on enlève la tuile de la réserve
             }
         }
         //mettre la tuile dans le chevalet du joueur
-        //tuile t;
-        //t.valeur = n;
-        //t.couleur = c;
+        tuile t;
+        t.valeur = n;
+        t.couleur = couleur;
+        print_tuile(t);
+        a=1;
+        
+        while (a){
+            if (c.list[y].valeur == 0){
+                c.list[y] = t;
+                a=0;
+            }
+            else{
+                y=y+1;
+            }
+        }
 
         
     }
+    return c;
+     
 }
 
 void initReserve(){
@@ -146,13 +177,13 @@ void initReserve(){
             /*tuile nt; //génère la tuile
             nt.valeur = n;
             nt.couleur = c;*/
-            reserve [n-1] [c-1] = 2; //indique que la tuile est dans la réserve en 2 exemplaires
+            reserve [n-1] [c] = 2; //indique que la tuile est dans la réserve en 2 exemplaires
         }
     }
-    reserve [14-1] [1-1] = 1; //génère le joker rouge
-    reserve [14-1] [2-1] = 1; //génère le joker noir
-    reserve [14-1] [3-1] = 1; //génère le joker orange
-    reserve [14-1] [4-1] = 1; //génère le joker bleu
+    reserve [14-1] [1] = 1; //génère le joker rouge
+    reserve [14-1] [2] = 1; //génère le joker vert
+    reserve [14-1] [3] = 1; //génère le joker orange
+    reserve [14-1] [4] = 1; //génère le joker bleu
 }
 
 //IA
@@ -168,6 +199,17 @@ void initReserve(){
 
 //Plateau de Jeu
 
+int main (void){
+    chevalet c;
+    c.idJoueur = 0;
 
+    initReserve();
+
+    //printf("%d\n", reserve[0][1]);
+
+    c = pioche(1, c);
+
+    print_tuile(c.list[0]);
+}
 
 
