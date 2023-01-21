@@ -1,4 +1,4 @@
-/*Fichier écrit par Guillaume FROMENT
+/*Fichier écrit par Guillaume FROMENT et Belinda AWUDZA
 
 Il a pour but de tester et d'implémenter les combinaisons du rummicube*/
 
@@ -30,6 +30,19 @@ int verif_tuile(tuile t){
     return 0; //tuile invalide
 }
 
+/*fonction qui compte combien de tuile il y a dans une combinaison et renvoie le nombre de tuile qu'il y a dans une combinaison*/
+int nb_tuile(combinaison combi){
+  int n=0;
+  int i=0;
+  //si la tuile suivante a pour valeur 0 alors les cases suivantes sont vides
+    while(combi.list[i].valeur!=0){
+      n=n+1;
+      i++;
+    }
+
+  return n;
+}
+
 void print_combinaison(combinaison c){
     tuile t;
     int i=0;
@@ -49,65 +62,89 @@ void print_combinaison(combinaison c){
     printf("FIN DE COMBINAISON\n");
 }
 
-int verif_combinaison(combinaison c){
-    int length=0;
-    tuile count = c.list[length];
-    while(verif_tuile(count)){ //cette boucle permet de compter le nombre de tuile et de vérifier leur validité
-        length = length+1;
-        printf("\n\n\nTuile num %d : \n", length);
-        print_tuile(count);
-        
-        count = c.list[length];
-    }
-    //length = length -1;
-    printf("%d\n", length);
-    if (length < 3){ //si la combinaison est trop petite, elle n'est pas valide
-        return 0;
+/*cette fonction prend en paramètre une fonction et renvoie 1 si la fonction est valide et 0 sinon*/
+int est_valide_combi(combinaison combi){
+    /*condition initaile la combinaison doit avoir un nombre de tuiles supérieur ou egal à 3*/
+    /*combinaisons des carrés de tuiles */
+    if (nb_tuile(combi)>=3){
+        //si on est en présence d'une combinaison de 3 tuiles
+        if(nb_tuile(combi)==3){
+            // verifions si les couleurs sont différentes
+            if(combi.list[0].couleur!=combi.list[1].couleur && combi.list[1].couleur!=combi.list[2].couleur && combi.list[0].couleur!=combi.list[2].couleur){
+                //verifions si les valeurs sont les mêmes
+                if (combi.list[0].valeur==combi.list[1].valeur && combi.list[0].valeur==combi.list[2].valeur && combi.list[1].valeur == combi.list[2].valeur){
+                combi.isValid=1;
+                }
+            }
+            else{
+                int intCouleur=combi.list[0].couleur;
+                int intValeur=combi.list[0].valeur;
+                if(combi.list[0].couleur==intCouleur && combi.list[1].couleur && combi.list[1].couleur==intCouleur && combi.list[2].couleur==intCouleur){
+                    if (combi.list[0].valeur==intValeur && combi.list[1].valeur==intValeur+1 && combi.list[2].valeur == intValeur+2){
+                        combi.isValid=1;
+                    }
+                }
+            }
+        }
+        //si on est en presence d'une combinaison de 4 tuile
+        if(nb_tuile(combi)==4){
+            // verifions si les couleurs sont différentes
+            if(combi.list[0].couleur!=combi.list[1].couleur && combi.list[0].couleur!=combi.list[3].couleur && combi.list[1].couleur!=combi.list[2].couleur &&combi.list[1].couleur!=combi.list[3].couleur && combi.list[0].couleur!=combi.list[2].couleur && combi.list[3].couleur!=combi.list[2].couleur  ){
+                //verifions si les valeurs sont les mêmes
+                if(combi.list[0].valeur ==combi.list[1].valeur && combi.list[0].valeur==combi.list[3].valeur && combi.list[1].valeur ==combi.list[2].valeur &&combi.list[1].valeur==combi.list[3].valeur && combi.list[0].valeur==combi.list[2].valeur && combi.list[3].valeur==combi.list[2].valeur){
+                combi.isValid=1;
+                }
+            }
+            else{
+                int intCouleur=combi.list[0].couleur;
+                int intValeur=combi.list[0].valeur;
+                if(combi.list[0].couleur==intCouleur && combi.list[1].couleur && combi.list[1].couleur==intCouleur && combi.list[2].couleur==intCouleur && combi.list[3].couleur==intCouleur){
+                //verifions que c'est une suite
+                    if (combi.list[0].valeur==intValeur && combi.list[1].valeur==intValeur+1 && combi.list[2].valeur == intValeur+2 && combi.list[3].valeur==intValeur+3){
+                    combi.isValid=1;
+                    }
+                }
+            }
+        }
+        if(nb_tuile(combi)>4){
+            int intCouleur=combi.list[0].couleur;
+            int intValeur=combi.list[0].valeur;
+            int n=0;
+            for(int i=0;i<nb_tuile(combi);i++){
+                if(combi.list[i].couleur==intCouleur && combi.list[i].valeur==intValeur+i){
+                n=n+1;
+                }
+            }
+            if(n==nb_tuile(combi)){
+                combi.isValid=1;
+            }
+        }
+
+
     }
 
-    tuile t1 = c.list[0];
-    tuile t2 = c.list[1];
-    if (t1.valeur == t2.valeur){ //permet de voir si la fonction est supposée être un carré
-        int carre = t1.valeur;
-        tuile t3 = c.list[2];
-        tuile t4;
-        int couleurs [5]; //permet de compter les couleurs disponibles
-        couleurs[1] = 1;
-        couleurs[2] = 1;
-        couleurs[3] = 1;
-        couleurs[4] = 1;
-        int l = 0; //permet de dire si la carré est de longueur 3 (l=0) ou 4 (l=1)
-        if (length == 4){
-            l=1;
-            t4 = c.list[3];
-        }
-        if (t3.valeur != carre){
-            return 0;
-        }
-        if (l == 1 && t4.valeur != carre){
-            return 0;
-        }
-        couleurs[t1.couleur] = couleurs[t1.couleur]-1; //permet de signifier que la couleur n'est pas utilisable par une autre tuile
-        couleurs[t2.couleur] = couleurs[t2.couleur]-1;
-        couleurs[t3.couleur] = couleurs[t3.couleur]-1;
-        if (l == 1){
-            couleurs[t4.couleur] = couleurs[t4.couleur]-1;
-        }
-        if (couleurs[1] < 0 || couleurs[2] < 0 || couleurs[3] < 0 || couleurs[4] < 0){ //si chaque couleur est utilisée au plus une fois
-            return 0;
-        }
-        return 1;
-    }
-
-    return 0;
+    return combi.isValid;
 }
 
-int main (void){
+
+
+/***
+ * Test des fonctions
+*/
+/*int main (void){
     combinaison c;
 
     tuile r1;
     r1.valeur = 1;
     r1.couleur = 1;
+
+    tuile r2;
+    r2.valeur = 2;
+    r2.couleur = 1;
+
+    tuile r3;
+    r3.valeur = 3;
+    r3.couleur = 1;
 
     tuile v1;
     v1.valeur = 1;
@@ -122,11 +159,11 @@ int main (void){
     b1.couleur = 4;
 
     c.list[0] = r1;
-    c.list[1] = v1;
-    c.list[2] = o1;
-    c.list[3] = b1;
+    c.list[1] = r2;
+    c.list[2] = r3;
+    //c.list[3] = b1;
 
-    c.isValid = verif_combinaison(c);
+    c.isValid = est_valide_combi(c);
 
     printf("%d\n", c.isValid);
     //print_tuile(r1);
@@ -138,4 +175,4 @@ int main (void){
     //print_tuile(b1);
     //printf("%d\n", verif_tuile(b1));
     return 0;
-}
+}*/
