@@ -155,9 +155,9 @@ chevalet pioche(int nb, chevalet c){
         //print_tuile(t);
         a=1;
         
-        while (a){// mets des commentaires stp 
-            if (c.list[y].valeur == 0){// je ne comprends pas cette ligne 
-                c.list[y] = t;
+        while (a){// cette boucle permet de placer la tuile piochée au bon endroit du chevalet
+            if (c.list[y].valeur == 0){// lorsqu'un chevalet est créé, il faut mettre la valeur des "tuiles" de la liste à 0 pour éviter les erreurs, 
+                c.list[y] = t;         //ainsi une tuile dont la valeur vaut 0 est un emplacement libre où placer les tuiles jouables 
                 a=0;
             }
             else{
@@ -199,21 +199,21 @@ void initReserve(){
 
 //Plateau de Jeu
 
-int main (void){//mets des commentaires stp 
-    chevalet c;
-    c.idJoueur = 0;
+int main (void){
+    chevalet c; //chevalet de test
+    c.idJoueur = 0; //id du joueur possédant le chevalet, inutile ici
 
-    initReserve();
+    initReserve(); // initialise la réserve
 
-    printf("%d\n", reserve[0][1]);
+    //printf("%d\n", reserve[0][1]); //affiche le nombre de tuiles 1 rouge dans la réserve
 
-    for (int y=0; y<30; y=y+1){
+    for (int y=0; y<30; y=y+1){ //met toutes les valeurs des tuiles du chevalet à 0, permet d'éviter les bugs à cause de valeurs non initialisées
         c.list[y].valeur = 0;
     }
     
-    c = pioche(14, c);
+    c = pioche(14, c); //pioche 14 tuiles et les dépose dans le chevalet c
 
-    for (int i = 0; i < 14; i=i+1){
+    for (int i = 0; i < 14; i=i+1){ //affiche les 14 premières du chevalet c
         printf ("i = %d", i);
         print_tuile(c.list[i]);
     }
