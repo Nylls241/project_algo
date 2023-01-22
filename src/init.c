@@ -35,7 +35,7 @@ application initSDL(void)
 /*-------------------------------------------------------------------------------------------------*/
 /*La fonction SDL_CreateWindow Crée une fenêtre avec la position les dimensions et les drapeaux (Flags) spécifiés qu'on stocke dans la variable app.fenetre */ 
 
-	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, fenetreFlags);/*Les paramètres : le titre de la fenêtre (ici RUMMIKUB) codé en UTF-8 , ensuite , la position en x ,  et la position en y de la fenêtre représenté ici par le flag SDL_WINDOWPOS_CENTERED qui va centrer la fenêtre, puis la largeur et la hauteur de la fenêtre et enfin le 0 pour rendre la fenêtre visible .*/
+	app.fenetre = SDL_CreateWindow("RUMMIKUB", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, largeur_ecran, hauteur_ecran, fenetreFlags);/*Les paramètres : le titre de la fenêtre (ici RUMMIKUB) codé en UTF-8 , ensuite , la position en x ,  et la position en y de la fenêtre représenté ici par le flag SDL_WINDOWPOS_CENTERED qui va centrer la fenêtre, puis la largeur et la hauteur de la fenêtre et enfin le 0 pour rendre la fenêtre visible .*/
 
         if  (app.fenetre == NULL)//Renvoie NULL si la fenetre n'a pas été créé .
 	{

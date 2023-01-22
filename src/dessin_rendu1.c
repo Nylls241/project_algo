@@ -6,12 +6,8 @@ void prepareScene(application app)
 {
 	SDL_SetRenderDrawColor(app.rendu, 96, 128, 255, 255);
 	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
-	application app = dessine_plateau(app) ;
-}
-/**/
-application dessine_plateau(application app)  
-{
-	SDL_Texture *texture = NULL ; 
+
+	app.image = SDL_LoadBMP("../images/plateau.bmp") ; 
 
 	if (app.image == NULL) //  On vérifie que l'app.image a été chargé
 	{
@@ -20,27 +16,33 @@ application dessine_plateau(application app)
 
 	}
 
-	texture = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la texture à partir de la surface sur  app.rendu.
+	app.texture = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la app.texture à partir de la surface sur  app.rendu.
 	
-	SDL_FreeSurface(app.image) ; // on libère la surface , vu qu'on a déjà chargé l'app.image(surface) dans la texture.On en a plus besoin .
+	SDL_FreeSurface(app.image) ; // on libère la surface , vu qu'on a déjà chargé l'app.image(surface) dans la app.texture.On en a plus besoin .
 
-	if (texture == NULL)//On vérifie que la texture a bien été crée 
+	if (app.texture == NULL)//On vérifie que la app.texture a bien été crée 
 	{
 		detruit(app) ;
-                SDL_ErrorQuit("echec chargement texture \n") ;
+                SDL_ErrorQuit("echec chargement app.texture \n") ;
 	}
 
-	SDL_Rect rectangle ; //On créé le rectangle qui servira de cadre pour notre texture .
+	SDL_Rect rectangle ; //On créé le rectangle qui servira de cadre pour notre app.texture .
+	rectangle.x = 0 ;//positon en x de la app.texture sur la fenêtre 
+	rectangle.y = 0 ;//Position en y de la app.texture sur la fenêtre
+	rectangle.w = largeur_ecran;
+	rectangle.h = hauteur_ecran ; 
+	if( SDL_RenderDrawRect(app.rendu,&rectangle) != 0 ){
 
-	SDL_QueryTexture(texture, NULL, NULL, &rectangle.w, &rectangle.h) ; //Charge la texture en mémoire avec les dimmensions(wigth, hight) 
+		SDL_ErrorQuit("échec dessin du rectangle\n") ;
+	}
+							
 
-	rectangle.x = 0 ;//positon en x de la texture sur la fenêtre 
-	rectangle.y = 0 ;//Position en y de la texture sur la fenêtre
+	SDL_QueryTexture(app.texture, NULL, NULL, &rectangle.w, &rectangle.h) ; //Charge la app.texture en mémoire avec les dimmensions(wigth, hight) 
 
 
-	SDL_RenderCopy(app.rendu, texture, NULL, &rectangle); // Colle la texture ayant pour cadre (rectangle) sur app.rendu 
 
-	return (app) ; 
+	SDL_RenderCopy(app.rendu, app.texture, NULL, &rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
+
 }
 
 
