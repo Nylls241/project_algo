@@ -2,14 +2,16 @@
 #define  STRUCTS_H
 
 //Structures rédigées par Nylls Gersan BOUTOTO :
-typedef struct {
+typedef struct application {
 	SDL_Renderer *rendu;// pointeur pour le rendu 
 	SDL_Window *fenetre;// pointeur pour la fenêtre
 	SDL_Surface *image ; // pointeur pour la surface 
 	SDL_Texture *texture ;// pointeur de texture 		    
 } application;
 
-//Structures rédigées par Guillaume FROMENT :
+
+
+///Structures rédigées par Guillaume FROMENT :
 typedef struct tuile{
     int valeur; //valeur numérique de la tuile, le 14 est le joker
     int couleur; //couleur de la tuile : 1 = rouge, 2 = vert, 3 = orange, 4 = bleu
