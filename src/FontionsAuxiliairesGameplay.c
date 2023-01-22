@@ -155,8 +155,8 @@ chevalet pioche(int nb, chevalet c){
         //print_tuile(t);
         a=1;
         
-        while (a){
-            if (c.list[y].valeur == 0){
+        while (a){// mets des commentaires stp 
+            if (c.list[y].valeur == 0){// je ne comprends pas cette ligne 
                 c.list[y] = t;
                 a=0;
             }
@@ -199,7 +199,7 @@ void initReserve(){
 
 //Plateau de Jeu
 
-int main (void){
+int main (void){//mets des commentaires stp 
     chevalet c;
     c.idJoueur = 0;
 
