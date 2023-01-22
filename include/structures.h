@@ -5,7 +5,8 @@
 typedef struct {
 	SDL_Renderer *rendu;// pointeur pour le rendu 
 	SDL_Window *fenetre;// pointeur pour la fenêtre
-			    
+	SDL_Surface *image ; // pointeur pour la surface 
+	SDL_Texture *texture ;// pointeur de texture 		    
 } application;
 
 //Structures rédigées par Guillaume FROMENT :
