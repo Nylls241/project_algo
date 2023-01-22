@@ -7,7 +7,7 @@ Les codes suivants sont pour l'instant des algorithmes qui nous permettent de d�
 #include "../include/include.h"
 
 void print_tuile(tuile t){
-    printf("%d\n", t.valeur);
+    printf(" Tuile : %d ", t.valeur);
     if (t.couleur == 0){
         printf("test\n");
     }
@@ -143,16 +143,16 @@ chevalet pioche(int nb, chevalet c){
         while(a){
             n = rand()%14+1; //permet d'obtenir un numéro de tuile
             couleur = rand()%4+1; //permet d'obtenir une couleur de tuile
-            if (reserve [n-1] [couleur-1] > 0){ //si la tuile est dans la réserve, pour éviter les duplicatas
+            if (reserve [n-1] [couleur] > 0 && reserve [n-1] [couleur] < 3){ //si la tuile est dans la réserve, pour éviter les duplicatas
                 a=0;
-                reserve [n-1] [couleur-1] = reserve [n-1] [couleur-1] -1; //on enlève la tuile de la réserve
+                reserve [n-1] [couleur] = reserve [n-1] [couleur] -1; //on enlève la tuile de la réserve
             }
         }
         //mettre la tuile dans le chevalet du joueur
         tuile t;
         t.valeur = n;
         t.couleur = couleur;
-        print_tuile(t);
+        //print_tuile(t);
         a=1;
         
         while (a){
@@ -205,11 +205,19 @@ int main (void){
 
     initReserve();
 
-    //printf("%d\n", reserve[0][1]);
+    printf("%d\n", reserve[0][1]);
 
-    c = pioche(1, c);
+    for (int y=0; y<30; y=y+1){
+        c.list[y].valeur = 0;
+    }
+    
+    c = pioche(14, c);
 
-    print_tuile(c.list[0]);
+    for (int i = 0; i < 14; i=i+1){
+        printf ("i = %d", i);
+        print_tuile(c.list[i]);
+    }
+    
 }
 
 
