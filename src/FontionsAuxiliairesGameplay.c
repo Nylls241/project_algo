@@ -171,13 +171,13 @@ chevalet pioche(int nb, chevalet c){
      
 }
 
-void initReserve(){
+void initReserve(){ //commente 
     for (int n=1; n<14; n++){
         for (int c=1; c<5; c++){
             /*tuile nt; //génère la tuile
             nt.valeur = n;
             nt.couleur = c;*/
-            reserve [n-1] [c] = 2; //indique que la tuile est dans la réserve en 2 exemplaires
+            reserve [n-1] [c] = 2; //indique que la tuile est dans la réserve en 2 exemplaires // pourquoi ? 
         }
     }
     reserve [14-1] [1] = 1; //génère le joker rouge
