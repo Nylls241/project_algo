@@ -56,7 +56,7 @@ SDL_Rect dessiner_rectangle(int x , int y , int w ,int h){
 }
 
 /*-------------------------------------------------------------------------------------------------*/
-//cette fonction sera appélé lors de l'évenement pour dessiner les tuiles
+//cette fonction sera appélé pour  dessiner les tuiles
 
 void dessin_tuile(application app , tuile t){
 

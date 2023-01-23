@@ -132,7 +132,7 @@ int isMyTurn(int t, int idJoueur){
 
 //Pioche
 
-chevalet pioche(int nb, chevalet c){
+chevalet pioche(int nb, chevalet c,application app ){
     //permet de piocher des tuiles depuis la réserve, généralement soit 1 ou 14
     //Besoin graphique : tuile, animation de déplacement de tuile
     int y=0;
@@ -152,7 +152,7 @@ chevalet pioche(int nb, chevalet c){
         tuile t;
         t.valeur = n;
         t.couleur = couleur;
-        //print_tuile(t);
+        dessin_tuile(app,t);//print_tuile(t);// dessinons les tuiles 
         a=1;
         
         while (a){// cette boucle permet de placer la tuile piochée au bon endroit du chevalet
@@ -199,8 +199,9 @@ void initReserve(){
 
 //Plateau de Jeu
 
-int main (void){
+/*int main (void){
     chevalet c; //chevalet de test
+    application app ;
     c.idJoueur = 0; //id du joueur possédant le chevalet, inutile ici
 
     initReserve(); // initialise la réserve
@@ -211,13 +212,13 @@ int main (void){
         c.list[y].valeur = 0;
     }
     
-    c = pioche(14, c); //pioche 14 tuiles et les dépose dans le chevalet c
+    c = pioche(14, c,app); //pioche 14 tuiles et les dépose dans le chevalet c
 
     for (int i = 0; i < 14; i=i+1){ //affiche les 14 premières du chevalet c
         printf ("i = %d", i);
         print_tuile(c.list[i]);
     }
     
-}
+}*/
 
 
