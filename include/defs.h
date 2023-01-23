@@ -7,7 +7,7 @@
 #define hauteur_tuile 50 
 #define position_plateau_x 0
 #define position_plateau_y 0
-
-
+#define hauteur_chevalet 100 ;
+#define largeur_chevalet 827;
 
 #endif
