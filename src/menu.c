@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 void SDL_ExitWithError(const char *message);
-
+/*
 int setWindowColor(SDL_Renderer *renderer, SDL_Color color)
 {
     if(SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b) < 0)
@@ -12,17 +12,17 @@ int setWindowColor(SDL_Renderer *renderer, SDL_Color color)
         return -1;
     return 0;  
 }
-
+*/
 int main(void)
 {
 
 
 	SDL_Window *window = NULL;
 	SDL_Renderer *renderer = NULL;
-	SDL_Color blanc = {255, 255, 255};
+	//SDL_Color blanc = {255, 255, 255};
 
 
-    setWindowColor(renderer, blanc); 
+    //setWindowColor(renderer, blanc); 
    
 
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -101,7 +101,7 @@ rectangle.h = 120; // hauteur
 
 void SDL_ExitWithError(const char *message)
 {
-	SDL_Log("Erreur : %s > %s\n", message, SDL_GetError);
+	SDL_Log("Erreur : %s > %s\n", message, SDL_GetError());
 	SDL_Quit();
 	exit(EXIT_FAILURE);
 } 
