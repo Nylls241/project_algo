@@ -4,7 +4,7 @@ int main(void)
 {
 	application app = prepareScene( app) ;
 
-	app = creer_texture(app,dessiner_rectangle(position_plateau_x,position_plateau_y,largeur_ecran,hauteur_ecran)) ;
+	app = dessin_plateau(app,position_plateau(position_plateau_x,position_plateau_y)) ;
 	SDL_Rect rectangle ;// le rectangle pour le chevalet
 	rectangle.x = 131 ;
 	rectangle.y = 620 ;

@@ -7,7 +7,7 @@ application dessine_plateau(application app) ;
 application prepareScene(application app ) ;
 void presentScene(application app ) ;
 application initSDL(void) ;
-application creer_texture(application app,SDL_Rect rectangle) ;
-SDL_Rect dessiner_rectangle(int x , int y , int w ,int h);
+application dessin_plateau(application app,SDL_Rect rectangle) ;
+SDL_Rect position_plateau(int x , int y );
 
 #endif 

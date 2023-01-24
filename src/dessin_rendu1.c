@@ -29,7 +29,7 @@ void presentScene(application app )
 	SDL_RenderPresent(app.rendu);// affiche le rendu sur la fenêtre ... 
 }
 /*-------------------------------------------------------------------------------------------------*/
-application creer_texture(application app ,SDL_Rect rectangle){
+application dessin_plateau(application app ,SDL_Rect rectangle){
 	
 
 	app.texture  = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la app.texture à partir de la surface sur  app.rendu.
@@ -44,13 +44,11 @@ application creer_texture(application app ,SDL_Rect rectangle){
 
 }
 /*-------------------------------------------------------------------------------------------------*/
-//dessine le rectangle
-SDL_Rect dessiner_rectangle(int x , int y , int w ,int h){
+//Position  en x et y pour le plateau 
+SDL_Rect position_plateau(int x , int y ){
 	SDL_Rect rectangle ;
 	rectangle.x = x ;
 	rectangle.y = y;
-	rectangle.w = w ; 
-	rectangle.h = h ;
 	
 	return (rectangle) ;
 }
