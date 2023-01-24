@@ -54,6 +54,27 @@ SDL_Rect position_plateau(int x , int y ){
 }
 
 /*-------------------------------------------------------------------------------------------------*/
+application dessin_chevalet(application app) {
+	app = dessin_plateau(app,position_plateau(position_plateau_x,position_plateau_y)) ;
+
+	SDL_Rect r ;
+	r.x = position_chevaletx;
+	r.y = position_chevalety;
+	r.w = largeur_chevalet ;
+	r.h = hauteur_chevalet ;
+	SDL_RenderDrawRect(app.rendu,&r) ;//le rectangle est dessiné 
+	//dessinons la ligne du millieu
+	SDL_SetRenderDrawColor(app.rendu,96,128,255,255) ; //couleur bleu de la ligne
+	SDL_RenderDrawLine(app.rendu,position_chevaletx , position_chevalety + 50 ,position_chevaletx + largeur_chevalet,position_chevalety + 50 ) ;
+	//dessinons les 15 colones 
+	for (int i =0 ; i<15 ; i++){
+		SDL_SetRenderDrawColor(app.rendu,96,128,255,255) ;
+		SDL_RenderDrawLine(app.rendu,position_chevaletx +(i * 43) , position_chevalety , position_chevaletx +((i+1) *43) , position_chevalety + 100) ;
+}
+	return (app) ;
+}
+
+/*-------------------------------------------------------------------------------------------------*/
 //cette fonction sera appélé pour  dessiner les tuiles
 
 void dessin_tuile(application app , tuile t){
