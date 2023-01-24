@@ -69,7 +69,7 @@ application dessin_chevalet(application app) {
 	//dessinons les 15 colones 
 	for (int i =0 ; i<15 ; i++){
 		SDL_SetRenderDrawColor(app.rendu,96,128,255,255) ;
-		SDL_RenderDrawLine(app.rendu,position_chevaletx +(i * 43) , position_chevalety , position_chevaletx +((i+1) *43) , position_chevalety + 100) ;
+		SDL_RenderDrawLine(app.rendu,position_chevaletx +(i * 43) , position_chevalety , position_chevaletx +(i *43) , position_chevalety + 100) ;
 }
 	return (app) ;
 }
