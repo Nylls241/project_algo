@@ -9,5 +9,6 @@ void presentScene(application app ) ;
 application initSDL(void) ;
 application dessin_plateau(application app,SDL_Rect rectangle) ;
 SDL_Rect position_plateau(int x , int y );
+application dessin_chevalet (application app);
 
 #endif 
