@@ -152,15 +152,7 @@ chevalet pioche(int nb, chevalet c,application app ){
         tuile t;
         t.valeur = n;
         t.couleur = couleur;
-  //      dessin_tuile(app,t);//print_tuile(t);// dessinons les tuiles 
-	SDL_Rect rectangle ;// le rectangle pour le chevalet , on met la fonction dessine rect là
-	rectangle.x = 131 ;
-	rectangle.y = 620 ;
-	rectangle.w = largeur_chevalet ;
-	rectangle.h = hauteur_chevalet ;
-	if (SDL_RenderDrawRect(app.rendu ,&rectangle) =! 0){
-		SDL_ErrorQuit("impossible de dessiner le rectangle \n") ;
-	}
+        charger_tuile(app,t);//print_tuile(t);// dessinons la tuile (ou les tuiles ) 
 
         a=1;
         
