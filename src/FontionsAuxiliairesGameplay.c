@@ -132,7 +132,7 @@ int isMyTurn(int t, int idJoueur){
 
 //Pioche
 
-chevalet pioche(int nb, chevalet c,application app ){
+app_che pioche(int nb, app_che ac){
     //permet de piocher des tuiles depuis la réserve, généralement soit 1 ou 14
     //Besoin graphique : tuile, animation de déplacement de tuile
     int y=0;
@@ -152,13 +152,14 @@ chevalet pioche(int nb, chevalet c,application app ){
         tuile t;
         t.valeur = n;
         t.couleur = couleur;
-        charger_tuile(app,t);//print_tuile(t);// dessinons la tuile (ou les tuiles ) 
+        
 
         a=1;
         
         while (a){// cette boucle permet de placer la tuile piochée au bon endroit du chevalet
-            if (c.list[y].valeur == 0){// lorsqu'un chevalet est créé, il faut mettre la valeur des "tuiles" de la liste à 0 pour éviter les erreurs, 
-                c.list[y] = t;         //ainsi une tuile dont la valeur vaut 0 est un emplacement libre où placer les tuiles jouables 
+            if (ac.che.list[y].valeur == 0){// lorsqu'un chevalet est créé, il faut mettre la valeur des "tuiles" de la liste à 0 pour éviter les erreurs, 
+                ac.che.list[y] = t;         //ainsi une tuile dont la valeur vaut 0 est un emplacement libre où placer les tuiles jouables 
+                ac.app = charger_tuile(ac.app,t,y);//print_tuile(t);// dessinons la tuile (ou les tuiles ) 
                 a=0;
             }
             else{
@@ -168,7 +169,7 @@ chevalet pioche(int nb, chevalet c,application app ){
 
         
     }
-    return c;
+    return ac;
      
 }
 
@@ -199,27 +200,5 @@ void initReserve(){
 
 
 //Plateau de Jeu
-
-/*int main (void){
-    chevalet c; //chevalet de test
-    application app ;
-    c.idJoueur = 0; //id du joueur possédant le chevalet, inutile ici
-
-    initReserve(); // initialise la réserve
-
-    //printf("%d\n", reserve[0][1]); //affiche le nombre de tuiles 1 rouge dans la réserve
-
-    for (int y=0; y<30; y=y+1){ //met toutes les valeurs des tuiles du chevalet à 0, permet d'éviter les bugs à cause de valeurs non initialisées
-        c.list[y].valeur = 0;
-    }
-    
-    c = pioche(14, c,app); //pioche 14 tuiles et les dépose dans le chevalet c
-
-    for (int i = 0; i < 14; i=i+1){ //affiche les 14 premières du chevalet c
-        printf ("i = %d", i);
-        print_tuile(c.list[i]);
-    }
-    
-}*/
 
 

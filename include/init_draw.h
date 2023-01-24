@@ -10,5 +10,20 @@ application initSDL(void) ;
 application dessin_plateau(application app,SDL_Rect rectangle) ;
 SDL_Rect position_plateau(int x , int y );
 application dessin_chevalet (application app);
-void charger_tuile(application app , tuile t) ;
+application dessin_tuile(application app, int y);
+void charger_tuile(application app , tuile t, int y);
+
+
+
+int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
+int* initScore(int scores[]);
+int* finalScore(int scores[], chevalet chevalets[]);
+void afficheScore(int scores[]);
+void sauvegardeScore(int scores);
+int initTour();
+int nextTurn(int ot, int nbj);
+int isMyTurn(int t, int idJoueur);
+app_che pioche(int nb, app_che ac);
+void initReserve();
+
 #endif 
