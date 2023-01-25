@@ -155,12 +155,14 @@ app_che pioche(int nb, app_che ac){
         
 
         a=1;
-        
+        printf("pioche\n");
         while (a){// cette boucle permet de placer la tuile piochée au bon endroit du chevalet
             if (ac.che.list[y].valeur == 0){// lorsqu'un chevalet est créé, il faut mettre la valeur des "tuiles" de la liste à 0 pour éviter les erreurs, 
                 ac.che.list[y] = t;         //ainsi une tuile dont la valeur vaut 0 est un emplacement libre où placer les tuiles jouables 
+                printf("pre_pioche\n");
                 ac.app = charger_tuile(ac.app,t,y);//print_tuile(t);// dessinons la tuile (ou les tuiles ) 
                 a=0;
+                printf("post_pioche\n");
             }
             else{
                 y=y+1;
