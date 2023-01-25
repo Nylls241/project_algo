@@ -9,5 +9,6 @@ void presentScene(application app ) ;
 application initSDL(void) ;
 application creer_texture(application app,SDL_Rect rectangle) ;
 SDL_Rect dessiner_rectangle(int x , int y , int w ,int h);
+application white_window();
 
 #endif 
