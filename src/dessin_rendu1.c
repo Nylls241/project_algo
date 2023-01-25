@@ -176,59 +176,59 @@ application charger_tuile(application app , tuile t, int y){
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/r_01.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 2 :
                                 app.image = SDL_LoadBMP("images/r_02.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 3 :
                                 app.image = SDL_LoadBMP("images/r_03.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 4 :
                                 app.image = SDL_LoadBMP("images/r_04.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/r_05.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/r_06.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/r_07.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/r_08.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/r_09.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/r_10.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/r_11.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/r_12.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/r_13.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("images/r0.bmp") ;
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break ;
                 }
         }
@@ -237,59 +237,59 @@ application charger_tuile(application app , tuile t, int y){
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/b_01.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
 			  case 2 :
                                 app.image = SDL_LoadBMP("images/b_02.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 3 :
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 app.image = SDL_LoadBMP("images/b_03.bmp");
                                 break;
                         case 4 :
                                 app.image = SDL_LoadBMP("images/b_04.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/b_05.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/b_06.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/b_07.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/b_08.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/b_09.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/b_10.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/b_11.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/b_12.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/b_13.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("images/b_14.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                 }
         }
@@ -298,59 +298,59 @@ application charger_tuile(application app , tuile t, int y){
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/g_01.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 2 :
                                 app.image = SDL_LoadBMP("images/g_02.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 3 :
                                 app.image = SDL_LoadBMP("images/g_03.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
 			case 4 :
                                 app.image = SDL_LoadBMP("images/g_04.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/g_05.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/g_06.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/g_07.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/g_08.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/g_09.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/g_10.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/g_11.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/g_12.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/g_13.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("image/g0.bmp") ;
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                 }
         }
