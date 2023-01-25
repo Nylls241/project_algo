@@ -79,7 +79,7 @@ application dessin_chevalet(application app) {
 /*-------------------------------------------------------------------------------------------------*/
 //affichons les tuiles 
 application dessin_tuile(application app, int y){
-        app = dessin_chevalet(app);
+        
 	app.texture  = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la app.texture à partir de la surface sur  app.rendu.
 
 	SDL_Rect rectangle ; //création du rectangle qui nous servira à positionner les tuiles aux bon endroit
@@ -115,59 +115,59 @@ application charger_tuile(application app , tuile t, int y){
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/O_01.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 2 :
                                 app.image = SDL_LoadBMP("images/O_02.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 3 :
                                 app.image = SDL_LoadBMP("images/O_03.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 4 :
                                 app.image = SDL_LoadBMP("images/O_04.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/O_05.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/O_06.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/O_07.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/O_08.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/O_09.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/O_10.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/O_11.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/O_12.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/O_13.bmp");
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("images/O0.bmp") ;
-				app = dessin_tuile(app.image, y) ;
+				app = dessin_tuile(app, y) ;
                                 break ;
                 }
         }
