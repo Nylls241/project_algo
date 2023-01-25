@@ -97,8 +97,9 @@ application dessin_tuile(application app, int y){
                 rectangle.y = rectangle.y + 50; //on passe à la 2ème ligne
                 y = y-15; //y devient le nombre de case restant à parcourir pour trouver la position d'affichage, sachant qu'une ligne fait 15 cases
         }
-        rectangle.x = 131 + (43*y); //on se décale de 43 pixels par case à parcourir pour trouver la position d'affichage
+        rectangle.x = rectangle.x + (43*y); //on se décale de 43 pixels par case à parcourir pour trouver la position d'affichage
 
+        
 	SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
 
         return app;
@@ -109,65 +110,65 @@ application dessin_tuile(application app, int y){
 //cette fonction sera appélé pour  dessiner les tuiles
 
 application charger_tuile(application app , tuile t, int y){
-
+        printf("pre_if_charge\n");
     if (t.couleur == 3) //tuile_orange
     {
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/O_01.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 2 :
                                 app.image = SDL_LoadBMP("images/O_02.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 3 :
                                 app.image = SDL_LoadBMP("images/O_03.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 4 :
                                 app.image = SDL_LoadBMP("images/O_04.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/O_05.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/O_06.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/O_07.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/O_08.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/O_09.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/O_10.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/O_11.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/O_12.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/O_13.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("images/O0.bmp") ;
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break ;
                 }
         }
@@ -176,59 +177,59 @@ application charger_tuile(application app , tuile t, int y){
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/r_01.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 2 :
                                 app.image = SDL_LoadBMP("images/r_02.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 3 :
                                 app.image = SDL_LoadBMP("images/r_03.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 4 :
                                 app.image = SDL_LoadBMP("images/r_04.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/r_05.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/r_06.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/r_07.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/r_08.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/r_09.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/r_10.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/r_11.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/r_12.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/r_13.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("images/r0.bmp") ;
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break ;
                 }
         }
@@ -237,59 +238,59 @@ application charger_tuile(application app , tuile t, int y){
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/b_01.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
 			  case 2 :
                                 app.image = SDL_LoadBMP("images/b_02.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 3 :
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 app.image = SDL_LoadBMP("images/b_03.bmp");
                                 break;
                         case 4 :
                                 app.image = SDL_LoadBMP("images/b_04.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/b_05.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/b_06.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/b_07.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/b_08.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/b_09.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/b_10.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/b_11.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/b_12.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/b_13.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("images/b_14.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                 }
         }
@@ -298,63 +299,63 @@ application charger_tuile(application app , tuile t, int y){
                 switch(t.valeur){
                         case 1 :
                                 app.image = SDL_LoadBMP("images/g_01.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 2 :
                                 app.image = SDL_LoadBMP("images/g_02.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 3 :
                                 app.image = SDL_LoadBMP("images/g_03.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
 			case 4 :
                                 app.image = SDL_LoadBMP("images/g_04.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 5 :
                                 app.image = SDL_LoadBMP("images/g_05.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 6 :
                                 app.image = SDL_LoadBMP("images/g_06.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 7 :
                                 app.image = SDL_LoadBMP("images/g_07.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 8 :
                                 app.image = SDL_LoadBMP("images/g_08.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 9 :
                                 app.image = SDL_LoadBMP("images/g_09.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 10 :
                                 app.image = SDL_LoadBMP("images/g_10.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 11 :
                                 app.image = SDL_LoadBMP("images/g_11.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 12 :
                                 app.image = SDL_LoadBMP("images/g_12.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 13 :
                                 app.image = SDL_LoadBMP("images/g_13.bmp");
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                         case 14 :
                                 app.image = SDL_LoadBMP("image/g0.bmp") ;
-				app = dessin_tuile(app, y) ;
+				printf("pre_dessin\n"); app = dessin_tuile(app, y) ; printf("post_dessin\n");
                                 break;
                 }
         }
-
+        printf("post_if_charge\n");
         return app;
 }
                                       
