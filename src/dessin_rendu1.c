@@ -8,14 +8,14 @@ application prepareScene(application app)
 	SDL_SetRenderDrawColor(app.rendu, 96, 128, 255, 255);// couleur en arrière plan (ici ça sera bleu )
 	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
 
-	app.image = SDL_LoadBMP("images/plateau.bmp") ; // charge le plateau dans app.image
+	//app.image = SDL_LoadBMP("images/plateau.bmp") ; // charge le plateau dans app.image
 
-	if (app.image == NULL) //  On vérifie que l'app.image a été chargé
+/*	if (app.image == NULL) //  On vérifie que l'app.image a été chargé
 	{
 		detruit(app) ; 
 		SDL_ErrorQuit("echec chargement app.image \n") ;
 
-	}
+	}*/
 
 	return (app) ;
 }
@@ -29,13 +29,17 @@ void presentScene(application app )
 	SDL_RenderPresent(app.rendu);// affiche le rendu sur la fenêtre ... 
 }
 /*-------------------------------------------------------------------------------------------------*/
-application dessin_plateau(application app ,SDL_Rect rectangle){
-	
-
+application dessin_plateau(application app ){
+	app = prepareScene(app); //on prend la scène pour dessiner le plateau dessus
+	app.image = SDL_LoadBMP("images/plateau.bmp") ; 
 	app.texture  = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la app.texture à partir de la surface sur  app.rendu.
 	SDL_FreeSurface(app.image) ; // on libère la surface , vu qu'on a déjà chargé l'app.image(surface) dans la app.texture.On en a plus besoin .
 
+	SDL_Rect rectangle ;
+
 	SDL_QueryTexture(app.texture, NULL, NULL,&rectangle.w,&rectangle.h) ; //Charge la app.texture en mémoire avec les dimmensions
+	rectangle.x = position_plateau_x;
+	rectangle.y = position_plateau_y;
 
 
 	SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
@@ -44,20 +48,14 @@ application dessin_plateau(application app ,SDL_Rect rectangle){
 
 }
 /*-------------------------------------------------------------------------------------------------*/
-//Position  en x et y pour le plateau 
-SDL_Rect position_plateau(int x , int y ){
-	SDL_Rect rectangle ;
-	rectangle.x = x ; //rectangle.x = position_plateau_x
-	rectangle.y = y; //rectangle.y = position_plateau_y
 	
-	return (rectangle) ;
-}
+
 
 /*-------------------------------------------------------------------------------------------------*/
 //dessinons notre chevalet 
 
 application dessin_chevalet(application app) {
-	app = dessin_plateau(app,position_plateau(position_plateau_x,position_plateau_y)) ;
+	app = dessin_plateau(app);
 
 	SDL_Rect r ;
 	r.x = position_chevaletx;
@@ -77,9 +75,15 @@ application dessin_chevalet(application app) {
 }
 
 /*-------------------------------------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------------------------------------*/
+
 //affichons les tuiles 
 application dessin_tuile(application app, int y){
         
+	if ( app.image != NULL){
+		printf("app.iamge n'est pas null\n");
+	}
 	app.texture  = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la app.texture à partir de la surface sur  app.rendu.
 
 	SDL_Rect rectangle ; //création du rectangle qui nous servira à positionner les tuiles aux bon endroit
