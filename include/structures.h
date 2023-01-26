@@ -39,6 +39,7 @@ typedef struct app_che{
     chevalet che;
 } app_che;
 
+extern int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
 
 
 

@@ -3,9 +3,7 @@
 int main(void) 
 {
 	
-	tuile t ;
-	t.couleur = 2 ;
-	t.valeur = 5 ;
+	//initReserve() ;
 	application app = dessin_tuile(app,2);
 
 	presentScene(app) ; 

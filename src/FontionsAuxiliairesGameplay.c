@@ -26,7 +26,6 @@ void print_tuile(tuile t){
 }
 
 //Structures
-int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
 
 //Score 
 int* initScore(int scores[]){
@@ -132,7 +131,7 @@ int isMyTurn(int t, int idJoueur){
 
 //Pioche
 
-app_che pioche(int nb, app_che ac){
+/*app_che pioche(int nb, app_che ac){
     //permet de piocher des tuiles depuis la réserve, généralement soit 1 ou 14
     //Besoin graphique : tuile, animation de déplacement de tuile
     int y=0;
@@ -173,7 +172,7 @@ app_che pioche(int nb, app_che ac){
     }
     return ac;
      
-}
+}*/
 
 void initReserve(){
     for (int n=1; n<14; n++){

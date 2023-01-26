@@ -78,12 +78,12 @@ application dessin_chevalet(application app) {
 
 /*-------------------------------------------------------------------------------------------------*/
 
-//affichons les tuiles 
+//affichons les tuiles à était écrite à patir de plusieurs code réuni 
 application dessin_tuile(application app,int nb){
 
 	app = dessin_chevalet(app) ; //recupérons le chavalet pour poser les tuiles 
 	/*-------------------------------------------------------------*/
-	int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
+//	int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
 	int y =0 ; 
 	chevalet c ;
 	int n;
@@ -100,7 +100,7 @@ application dessin_tuile(application app,int nb){
             }
         
 	} 
-	}
+	
         //mettre la tuile dans le chevalet du joueur
         tuile t;
         t.valeur = n;
@@ -295,12 +295,12 @@ application dessin_tuile(application app,int nb){
         }
     
 	/*--------------------------------------------------------------*/
-	int a=1;
+	int b=1;
 
-        while (a){// cette boucle permet de placer la tuile piochée au bon endroit du chevalet
+        while (b){// cette boucle permet de placer la tuile piochée au bon endroit du chevalet
             if (c.list[y].valeur == 0){// lorsqu'un chevalet est créé, il faut mettre la valeur des "tuiles" de la liste à 0 pour éviter les erreurs,
                 c.list[y] = t;         //ainsi une tuile dont la valeur vaut 0 est un emplacement libre où placer les tuiles jouables
-                a=0;
+                b=0;
             }
             else{
                 y=y+1;
@@ -324,6 +324,7 @@ application dessin_tuile(application app,int nb){
 	rectangle.y = 620; 
 	//là
 
+/*------------------------------------------------------------------------------------*/
        if (y>14){ //si on doit positionner la tuile sur la 2ème ligne...
                 rectangle.y = rectangle.y + 50; //on passe à la 2ème ligne
                 y = y-15; //y devient le nombre de case restant à parcourir pour trouver la position d'affichage, sachant qu'une ligne fait 15 cases
@@ -332,8 +333,9 @@ application dessin_tuile(application app,int nb){
 	
 	
 	SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
-
+}
         return app;
+	
 }
 /*-------------------------------------------------------------------------------------------------*/
 
