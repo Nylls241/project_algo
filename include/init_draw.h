@@ -9,8 +9,7 @@ void presentScene(application app ) ;
 application initSDL(void) ;
 application dessin_plateau(application app) ;
 application dessin_chevalet (application app);
-application dessin_tuile(application app, int y);
-application charger_tuile(application app , tuile t, int y);
+application dessin_tuile(application app,int nb);
 
 
 
