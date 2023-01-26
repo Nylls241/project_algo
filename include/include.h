@@ -6,6 +6,7 @@
 #include "structures.h"
 #include "init_draw.h"
 #include "destroy.h"
+#include "SDL_ttf.h"
 #include <stdlib.h>
 #include <stdio.h>
 
