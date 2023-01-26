@@ -79,33 +79,11 @@ application dessin_chevalet(application app) {
 /*-------------------------------------------------------------------------------------------------*/
 
 //affichons les tuiles à était écrite à patir de plusieurs code réuni 
-application dessin_tuile(application app,int nb){
+application dessin_tuile(application app, tuile t, int pos){
 
 	app = dessin_chevalet(app) ; //recupérons le chavalet pour poser les tuiles 
 	/*-------------------------------------------------------------*/
-//	int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
-	int y =0 ; 
-	chevalet c ;
-	int n;
-        int couleur;
-        for (int i=1; i<=nb; i++){
-       
-        int a = 1;
-        while(a){
-            n = rand()%14+1; //permet d'obtenir un numéro de tuile
-            couleur = rand()%4+1; //permet d'obtenir une couleur de tuile
-            if (reserve [n-1] [couleur] > 0 && reserve [n-1] [couleur] < 3){ //si la tuile est dans la réserve, pour éviter les duplicatas
-                a=0;
-                reserve [n-1] [couleur] = reserve [n-1] [couleur] -1; //on enlève la tuile de la réserve
-            }
-        
-	} 
-	
-        //mettre la tuile dans le chevalet du joueur
-        tuile t;
-        t.valeur = n;
-        t.couleur = couleur;
-	/*-------------------------------------------------------------*/
+
          if (t.couleur == 3) //tuile_orange
     {
                 switch(t.valeur){
@@ -295,17 +273,7 @@ application dessin_tuile(application app,int nb){
         }
     
 	/*--------------------------------------------------------------*/
-	int b=1;
 
-        while (b){// cette boucle permet de placer la tuile piochée au bon endroit du chevalet
-            if (c.list[y].valeur == 0){// lorsqu'un chevalet est créé, il faut mettre la valeur des "tuiles" de la liste à 0 pour éviter les erreurs,
-                c.list[y] = t;         //ainsi une tuile dont la valeur vaut 0 est un emplacement libre où placer les tuiles jouables
-                b=0;
-            }
-            else{
-                y=y+1;
-            }
-	}
 
 /*--------------------------------------------------------------*/
 
@@ -325,11 +293,11 @@ application dessin_tuile(application app,int nb){
 	//là
 
 /*------------------------------------------------------------------------------------*/
-       if (y>14){ //si on doit positionner la tuile sur la 2ème ligne...
+       if (pos>14){ //si on doit positionner la tuile sur la 2ème ligne...
                 rectangle.y = rectangle.y + 50; //on passe à la 2ème ligne
-                y = y-15; //y devient le nombre de case restant à parcourir pour trouver la position d'affichage, sachant qu'une ligne fait 15 cases
+                pos = pos-15; //y devient le nombre de case restant à parcourir pour trouver la position d'affichage, sachant qu'une ligne fait 15 cases
         }
-        rectangle.x = rectangle.x + (43*y); //on se décale de 43 pixels par case à parcourir pour trouver la position d'affichage
+        rectangle.x = rectangle.x + (43*pos); //on se décale de 43 pixels par case à parcourir pour trouver la position d'affichage
 	
 	
 	SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
