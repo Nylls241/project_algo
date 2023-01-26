@@ -324,7 +324,13 @@ application dessin_tuile(application app,int nb){
 	rectangle.y = 620; 
 	//là
 
-       
+       if (y>14){ //si on doit positionner la tuile sur la 2ème ligne...
+                rectangle.y = rectangle.y + 50; //on passe à la 2ème ligne
+                y = y-15; //y devient le nombre de case restant à parcourir pour trouver la position d'affichage, sachant qu'une ligne fait 15 cases
+        }
+        rectangle.x = rectangle.x + (43*y); //on se décale de 43 pixels par case à parcourir pour trouver la position d'affichage
+	
+	
 	SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
 
         return app;
