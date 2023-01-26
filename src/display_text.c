@@ -108,7 +108,7 @@ application display_text()
 		{
 			if (event.type == SDL_QUIT)
 			{
-				true = exit;
+				exit = true;
 			}
 		}
 
