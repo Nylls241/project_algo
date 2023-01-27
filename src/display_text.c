@@ -1,147 +1,145 @@
 #include "../include/include.h"
 
-application display_text()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main(int argc, char *argv[])
 {
+    SDL_Window *fenetre = NULL;
+    SDL_Renderer *rendu = NULL;
+    SDL_Color blanc = {255, 255, 255, 255};
 
-	application app;
-	app.fenetre = NULL;
-	app.rendu = NULL;
-
-
-	// Initialisation de la SDL
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	{
-		printf("Erreur lors de l'initialisation de la SDL : %s\n", SDL_GetError());
-		exit(EXIT_FAILURE);
-	}
+    if(SDL_Init(SDL_INIT_VIDEO != 0))
+    {
+        fprintf(stderr, "Erreur d'initialisation de la SDL : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
 
 
-	//Initialisation de SDL_ttf
-
-	if (TTF_Init() != 0)
-	{
-		printf("Erreur lors de l'initialisation de SDL_ttf%s\n", TTF_GetError());
-		exit(EXIT_FAILURE);
-	}
-
-
-	// Chargement de la police
-
-	TTF_Font* police = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 20);
-	if (police == NULL)
-	{
-		printf("Erreur lors du chargement de la police. %s\n", TTF_GetError());
-		exit(EXIT_FAILURE);
-	}
+    fenetre = SDL_CreateWindow("Jeu Rummikub", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+                              640, 480, SDL_WINDOW_SHOWN);
+    if(fenetre == NULL)
+    {
+        fprintf(stderr, "Erreur de création de la fenêtre: %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
 
 
+    rendu = SDL_CreateRenderer(fenetre, -1, SDL_RENDERER_ACCELERATED);
+    if (rendu == NULL)
+    {
+        fprintf(stderr, "Erreur de création du rendu : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
 
-	// Création de la fenêtre
+    /*if (SDL_SetRenderDrawColor(rendu, 255, 255, 255, 255) != 0)
+    {
+        fprintf(stderr, "Erreur de changement de la couleur du rendu. : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }
 
+    if (SDL_RenderClear(rendu) != 0)
+    {
+        fprintf(stderr, "Erreur SDL_SetRenderDrawColor : %s", SDL_GetError());
+        return EXIT_FAILURE;
+    }*/
 
-	app.fenetre = SDL_CreateWindow("Partie de *RUMMIKUB*",                        // Titre de la fenetre
-														SDL_WINDOWPOS_CENTERED,   //Abscisse (x)
-														SDL_WINDOWPOS_CENTERED,   // Ordonnée (y)
-														400, 300,                 // Largeur et hauteur de la fenêtre en pixels
-														SDL_WINDOW_SHOWN );       // Drapeau : on peut aussi mettre 0 par défaut
+    // Initialisation de la SDL_ttf
 
+    if (TTF_Init() != 0)
+    {
+        fprintf(stderr, "Erreur d'initialisation de la SDL_ttf : %s", TTF_GetError());
+        return EXIT_FAILURE;
+    }
 
+    // Dans cette partie, nous allons charger une police depuis un fichier, 
+    // avec une taille de point à 30
 
-	// Création du rendu
-
-	app.rendu = SDL_CreateRenderer(app.fenetre,                       // Fenêtre dans laquelle on met le rendu
-								  -1,                                 //Pour gérer le driver de l'affichage
-								  SDL_RENDERER_SOFTWARE);               // Rendu logiciel
-
-
-
-	// Initialisation de la couleur du texte
-	SDL_Color text_color = {255, 0, 0, 0}    // Nous avons choisi ici la couleur rouge pour afficher la couleur du texte de notre jeu.
-
-
-
-	// Texte à afficher
-
-	char* text[] = "Bienvenue sur le jeu *RUMMIKUB*"
-
-
-
-	// Création de la surface contenant le texte
-
-	SDL_Surface* surface = TTF_RenderText_Blended(police, text, text_color);
-	if (surface == NULL)
-	{
-		printf("Erreur lors de la création de la surface. %s\n", TTF_GetError());
-		exit(EXIT_FAILURE);
-	}
+    TTF_Font* police = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 30);
+    if (!police)
+    {
+        fprintf(stderr, "Erreur de création de la police : %s", TTF_GetError());
+        return EXIT_FAILURE;
+    }
 
 
+    // Couleur du texte, ici nous utiliserons le rouge.
 
-	// Création de la texture à partir de la surface
+    SDL_Color TextColor;
+    TextColor.r = 255;
+    TextColor.g = 0;
+    TextColor.b = 0;
 
-	SDL_Texture* texture = SDL_CreateTextureFromSurface(app.rendu, surface);
-	if (texture == NULL)
-	{
-		printf("Erreur lors de la création de la texture. %s\n", SDL_GetError());
-		exit(EXIT_FAILURE);
-	}
+    // Création de la surface du texte.
 
+    SDL_Surface* TextSurface = TTF_RenderText_Solid(police, 
+        "Ceci est mon premier test de la librairie SDL_ttf",
+        TextColor);
 
-
-	// Positions et dimensions de la texture
-
-	SDL_Rect rectangle = {100,100,surface->w,surface->h};
-
-
-
-	// Ici nous entrerons dans la boucle principale;
-	//Nous éffectuerons notement la la gestion des différents évènements pouvant se produire dans cette partie.
-
-	bool exit
-
-	while(!exit)
-	{
-		// Commençons par la gestion des évènements.
-
-		SDL_Event event;
-		while(SDL_PollEvent(&event))
-		{
-			if (event.type == SDL_QUIT)
-			{
-				exit = true;
-			}
-		}
-
-		// Fonction pour éffacer l'écran.
-
-		SDL_RenderClear(app.rendu);
+    if (!TextSurface)
+    {
+        fprintf(stderr, "Erreur de création du rendu du texte : %s", TTF_GetError());
+        return EXIT_FAILURE;
+    }
 
 
-		// Affichage du texte : ici nous introduisons la fonction pour afficher notre texte à l'écran.
+    // Création de la surface de destination du texte
 
-		SDL_RenderCopy(app.rendu, texture, NULL, &rectangle);
-
-		//Mise à jour de l'affichage
-
-		SDL_RenderPresent(app.rendu);
-
-	}
+    SDL_Rect DstRect;
+    DstRect.x = 10;
+    DstRect.y = 10;
+    DstRect.w = TextSurface->w;
+    DstRect.h = TextSurface->h;
 
 
+    //Affiche toute la surface en 100, 100
 
-	// Libérqtion des ressources.
-
-	SDL_DestroyTexture(texture);
-	SDL_FreeSurface(surface);
-	TTF_CloseFont(police);
-	SDL_DestroyRenderer(app.rendu);
-	SDL_DestroyWindow(app.fenetre);
-	TTF_Quit();
-	SDL_QUIT();
+    SDL_BlitSurface(TextSurface, NULL, rendu, &DstRect);
 
 
 
 
 
-	return 0;
+
+
+     
+    
+    SDL_Delay(5000);
+    SDL_RenderPresent(rendu);
+    SDL_Delay(5000);
+
+
+    // Libère notre surface et notre police 
+
+    SDL_FreeSurface(TextSurface);
+    TTF_CloseFont(Font);
+
+    SDL_DestroyRenderer(rendu);
+    SDL_DestroyWindow(fenetre);
+    TTF_Quit();
+    SDL_Quit();
+
+    return EXIT_SUCCESS;
 }
