@@ -133,13 +133,14 @@ int main(int argc, char *argv[])
     SDL_Delay(2000);
     SDL_RenderPresent(rendu);
     SDL_Delay(5000);
+    
 
 
 
     // Libère notre surface et notre police 
 
     //SDL_FreeSurface(TextSurface);
-    //TTF_CloseFont(police);
+    //TTF_CloseFont(police);                            
 
     SDL_DestroyRenderer(rendu);
     SDL_DestroyWindow(fenetre);
