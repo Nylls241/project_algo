@@ -4,11 +4,12 @@
 #include "SDL.h"
 #include "defs.h"
 #include "structures.h"
-//#include "SDL_ttf.h"
 #include "init_draw.h"
 #include "destroy.h"
 #include <stdlib.h>
+#include "SDL_ttf.h"
+#include "SDL_image.h"
 #include <stdio.h>
-#include <stdbool.h>
+
 
 #endif 
