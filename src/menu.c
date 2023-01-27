@@ -1,9 +1,16 @@
 #include "../include/include.h"
 
-int main(void)
+int main(int argc, char* argv[]) 
 {
 	
-	application app = white_window(app);
+	/*SDL_Surface *image= NULL;
+	/*application app = white_window(app);
 	input();
-	destroySDL(app);
+	destroySDL(app);*/
+	application display_text();
+	
+	
 }
+
+
+
