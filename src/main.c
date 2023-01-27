@@ -3,8 +3,7 @@
 int main(void) 
 {
 	
-	//initReserve() ;
-	application app = dessin_tuile(app,2);
+	application app = dessin_tuile(app, 1);
 
 	presentScene(app) ; 
 
