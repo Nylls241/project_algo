@@ -3,7 +3,7 @@
 int main(void) 
 {
 	
-	application app = dessin_tuile(app, 1);
+	application app = dessin_tuile(app, 30);
 
 	presentScene(app) ; 
 

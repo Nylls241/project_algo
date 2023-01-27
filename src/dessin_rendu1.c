@@ -83,6 +83,7 @@ application dessin_tuile(application app,int nb ){
 
 	app = dessin_chevalet(app) ; //recupérons le chavalet pour poser les tuiles
 
+	tuile reserve [4] [14]  ;
 	int n ; //pour le numéro de la tuile
 	int c ;//pour la couleur
 	int chevalet [30] ; //dimension du chevalet 15 * 2
@@ -298,8 +299,10 @@ application dessin_tuile(application app,int nb ){
 		SDL_FreeSurface(app.image) ; // on libère la surface , vu qu'on a déjà chargé l'app.image(surface) dans la app.texture.On en a plus besoin .
 
 		SDL_QueryTexture(app.texture, NULL, NULL,&rectangle.w,&rectangle.h) ; //Charge la app.texture en mémoire avec les dimmensions
+	/*--------------------------------------------------------------*/
 
 		//position tuiles, le switch sert à positionner une tuile à la position i
+
 		if(i<15){ //si i est est  inferieur à 15 on est sur la première ligne donc la position y du chevalet ne change pas et on place la tuile à la case i
 			rectangle.x = position_chevaletx+i*largeur_tuile;
 			rectangle.y = position_chevalety;
@@ -308,7 +311,7 @@ application dessin_tuile(application app,int nb ){
 			rectangle.y = position_chevalety+hauteur_tuile;
 		}
 
-		//là
+	
 
 	/*------------------------------------------------------------------------------------*/
 		SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu
