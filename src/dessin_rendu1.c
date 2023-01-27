@@ -1,18 +1,18 @@
 #include "../include/include.h"
 
 /*-------------------------------------------------------------------------------------------------*/
-//prepareScene traite la préparation de notre jeu 
+//prepareScene traite la préparation de notre jeu
 application prepareScene(application app)
 {
 	app = initSDL();
 	SDL_SetRenderDrawColor(app.rendu, 96, 128, 255, 255);// couleur en arrière plan (ici ça sera bleu )
-	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre 
+	SDL_RenderClear(app.rendu);// rafraîchi le rendu sur la fenêtre
 
 	//app.image = SDL_LoadBMP("images/plateau.bmp") ; // charge le plateau dans app.image
 
 /*	if (app.image == NULL) //  On vérifie que l'app.image a été chargé
 	{
-		detruit(app) ; 
+		detruit(app) ;
 		SDL_ErrorQuit("echec chargement app.image \n") ;
 
 	}*/
@@ -26,12 +26,12 @@ application prepareScene(application app)
 
 void presentScene(application app )
 {
-	SDL_RenderPresent(app.rendu);// affiche le rendu sur la fenêtre ... 
+	SDL_RenderPresent(app.rendu);// affiche le rendu sur la fenêtre ...
 }
 /*-------------------------------------------------------------------------------------------------*/
 application dessin_plateau(application app ){
 	app = prepareScene(app); //on prend la scène pour dessiner le plateau dessus
-	app.image = SDL_LoadBMP("images/plateau.bmp") ; 
+	app.image = SDL_LoadBMP("images/plateau.bmp") ;
 	app.texture  = SDL_CreateTextureFromSurface(app.rendu , app.image) ;//Création de la app.texture à partir de la surface sur  app.rendu.
 	SDL_FreeSurface(app.image) ; // on libère la surface , vu qu'on a déjà chargé l'app.image(surface) dans la app.texture.On en a plus besoin .
 
@@ -42,31 +42,31 @@ application dessin_plateau(application app ){
 	rectangle.y = position_plateau_y;
 
 
-	SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
+	SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu
 
 	return(app) ;
 
 }
 /*-------------------------------------------------------------------------------------------------*/
-	
+
 
 
 /*-------------------------------------------------------------------------------------------------*/
-//dessinons notre chevalet 
+//dessinons notre chevalet
 
 application dessin_chevalet(application app) {
-	app = dessin_plateau(app);//recupérons le plateau pour dessiner deçu 
+	app = dessin_plateau(app);//recupérons le plateau pour dessiner deçu
 
 	SDL_Rect r ;
 	r.x = position_chevaletx;
 	r.y = position_chevalety;
 	r.w = largeur_chevalet ;
 	r.h = hauteur_chevalet ;
-	SDL_RenderDrawRect(app.rendu,&r) ;//le rectangle du chevalet  est dessiné 
+	SDL_RenderDrawRect(app.rendu,&r) ;//le rectangle du chevalet  est dessiné
 	//dessinons la ligne du millieu
-	SDL_SetRenderDrawColor(app.rendu,96,128,255,255) ; //couleur bleu de la ligne(on la charge) 
+	SDL_SetRenderDrawColor(app.rendu,96,128,255,255) ; //couleur bleu de la ligne(on la charge)
 	SDL_RenderDrawLine(app.rendu,position_chevaletx , position_chevalety + 50 ,position_chevaletx + largeur_chevalet,position_chevalety + 50 ) ;
-	//dessinons les 15 colones 
+	//dessinons les 15 colones
 	for (int i =0 ; i<15 ; i++){
 		SDL_SetRenderDrawColor(app.rendu,96,128,255,255) ;
 		SDL_RenderDrawLine(app.rendu,position_chevaletx +(i * 43) , position_chevalety , position_chevaletx +(i *43) , position_chevalety + 100) ;
@@ -78,22 +78,22 @@ application dessin_chevalet(application app) {
 
 /*-------------------------------------------------------------------------------------------------*/
 
-//affichons les tuiles à était écrite à patir de plusieurs code réuni 
+//affichons les tuiles à était écrite à patir de plusieurs code réuni
 application dessin_tuile(application app,int nb ){
 
-	app = dessin_chevalet(app) ; //recupérons le chavalet pour poser les tuiles 
-				     
-	int n ; //pour le numéro de la tuile 
-	int c ;//pour la couleur  
-	int chevalet [30] ; //dimension du chevalet 15 * 2 
+	app = dessin_chevalet(app) ; //recupérons le chavalet pour poser les tuiles
+
+	int n ; //pour le numéro de la tuile
+	int c ;//pour la couleur
+	int chevalet [30] ; //dimension du chevalet 15 * 2
 
 	/*-------------------------------------------------------------*/
-	//On gère le fait d'afficher les tuiles de manières aléatoires 
+	//On gère le fait d'afficher les tuiles de manières aléatoires
 	for (int i = 0 ; i<nb; i ++){
-		
-		n = rand()%14+1; //permet d'obtenir un numéro de tuile 
-		c = rand()%4+1 ;//permet d'obtenir une couleur de tuile 
-		tuile t ; 
+
+		n = rand()%14+1; //permet d'obtenir un numéro de tuile
+		c = rand()%4+1 ;//permet d'obtenir une couleur de tuile
+		tuile t ;
 		t.valeur = n ;
 		t.couleur = c;
 		/*-------------------------------------------------------------*/
@@ -192,7 +192,7 @@ application dessin_tuile(application app,int nb ){
 					break ;
 			}
 		}
-		else if (t.couleur == 4){// tuile bleu 
+		else if (t.couleur == 4){// tuile bleu
 
 			switch(t.valeur){
 				case 1 :
@@ -285,7 +285,7 @@ application dessin_tuile(application app,int nb ){
 					app.image = SDL_LoadBMP("image/g0.bmp") ;
 			}
 		}
-	    
+
 		/*--------------------------------------------------------------*/
 
 
@@ -299,23 +299,27 @@ application dessin_tuile(application app,int nb ){
 
 		SDL_QueryTexture(app.texture, NULL, NULL,&rectangle.w,&rectangle.h) ; //Charge la app.texture en mémoire avec les dimmensions
 
-		//position tuiles
-		switch(i)
-		rectangle.x = 131; /*coint supérieur 
-					gauche du chevalet*/
-		rectangle.y = 620; 
+		//position tuiles, le switch sert à positionner une tuile à la position i
+		if(i<15){ //si i est est  inferieur à 15 on est sur la première ligne donc la position y du chevalet ne change pas et on place la tuile à la case i
+			rectangle.x = position_chevaletx+i*largeur_tuile;
+			rectangle.y = position_chevalety;
+		}else{//si i est est  supérieur à 15 on est sur la seconde ligne donc la position y du chevalet ne change pas et on place la tuile à la case i
+			rectangle.x = position_chevaletx+i*largeur_tuile;
+			rectangle.y = position_chevalety+hauteur_tuile;
+		}
+
 		//là
 
 	/*------------------------------------------------------------------------------------*/
-		SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu 
+		SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu
 	}
         return app;
-	
+
 }
 
 /*-------------------------------------------------------------------------------------------------*/
 
 
-                                      
+
 
 // Rediger par Nylls Gersan BOUTOTO
