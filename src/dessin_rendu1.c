@@ -76,31 +76,62 @@ application dessin_chevalet(application app) {
 
 /*-------------------------------------------------------------------------------------------------*/
 
+
+//fonction qui permet d'initialiser la réserve
+//les tuiles de la même colonne sont donc sur la même ligne
+
+void init_reserve(tuile res[4][14]){//Commente là belinda stp 
+for(int j=0;j<4;j++){
+	for(int i=0; i<14;i++){
+		tuile t1;
+		t1.couleur=j+1;
+		t1.valeur=i+1;
+
+		res[j][i]=t1;
+	}
+}
+
+}
+
 /*-------------------------------------------------------------------------------------------------*/
 
 //affichons les tuiles à était écrite à patir de plusieurs code réuni
-application dessin_tuile(application app,int nb ){
+application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuile pioché
 
 	app = dessin_chevalet(app) ; //recupérons le chavalet pour poser les tuiles
 
-	tuile reserve [4] [14]  ;
 	int n ; //pour le numéro de la tuile
 	int c ;//pour la couleur
 	int chevalet [30] ; //dimension du chevalet 15 * 2
+	tuile reserve[4][14]; // la reserve
+	init_reserve(reserve);
+
 
 	/*-------------------------------------------------------------*/
 	//On gère le fait d'afficher les tuiles de manières aléatoires
 	for (int i = 0 ; i<nb; i ++){
 
+
+
 		n = rand()%14+1; //permet d'obtenir un numéro de tuile
 		c = rand()%4+1 ;//permet d'obtenir une couleur de tuile
+//tant que la tuile choisie n'est pas dans la réserve on change de tuile
+		while(reserve[c-1][n-1].valeur==0){// la valeur d'une tuile est égale à 0 veut signifier que la tuile n'est plus dans la réserve
+			n = rand()%14+1; //permet d'obtenir un numéro de tuile
+			c = rand()%4+1 ;//permet d'obtenir une couleur de tuile
+		}
+
 		tuile t ;
 		t.valeur = n ;
 		t.couleur = c;
 		/*-------------------------------------------------------------*/
 
+
+//A partir d'ici la tuile qui sera affichée est déjà connue
+
 		if (t.couleur == 3) //tuile_orange
 	    {
+//				reserve[2][t.valeur-1].valeur=0; // c'est pourquoi là on l'enlève , pour évéter des répétition 
 			switch(t.valeur){
 				case 1 :
 					app.image = SDL_LoadBMP("images/O_01.bmp");
@@ -149,6 +180,7 @@ application dessin_tuile(application app,int nb ){
 		else if (t.couleur == 1)//tuile_rouge
 	    {
 			switch(t.valeur){
+//				reserve[0][t.valeur-1].valeur=0;
 				case 1 :
 					app.image = SDL_LoadBMP("images/r_01.bmp");
 					break;
@@ -196,6 +228,7 @@ application dessin_tuile(application app,int nb ){
 		else if (t.couleur == 4){// tuile bleu
 
 			switch(t.valeur){
+//				reserve[3][t.valeur-1].valeur=0;
 				case 1 :
 					app.image = SDL_LoadBMP("images/b_01.bmp");
 					break;
@@ -242,6 +275,7 @@ application dessin_tuile(application app,int nb ){
 		}
 		else if (t.couleur == 2)//tuile verte
 	    {
+//				reserve[1][t.valeur-1].valeur=0;
 			switch(t.valeur){
 				case 1 :
 					app.image = SDL_LoadBMP("images/g_01.bmp");
@@ -287,7 +321,6 @@ application dessin_tuile(application app,int nb ){
 			}
 		}
 
-		/*--------------------------------------------------------------*/
 
 
 	/*--------------------------------------------------------------*/
@@ -299,10 +332,8 @@ application dessin_tuile(application app,int nb ){
 		SDL_FreeSurface(app.image) ; // on libère la surface , vu qu'on a déjà chargé l'app.image(surface) dans la app.texture.On en a plus besoin .
 
 		SDL_QueryTexture(app.texture, NULL, NULL,&rectangle.w,&rectangle.h) ; //Charge la app.texture en mémoire avec les dimmensions
-	/*--------------------------------------------------------------*/
 
 		//position tuiles, le switch sert à positionner une tuile à la position i
-
 		if(i<15){ //si i est est  inferieur à 15 on est sur la première ligne donc la position y du chevalet ne change pas et on place la tuile à la case i
 			rectangle.x = position_chevaletx+i*largeur_tuile;
 			rectangle.y = position_chevalety;
@@ -311,7 +342,7 @@ application dessin_tuile(application app,int nb ){
 			rectangle.y = position_chevalety+hauteur_tuile;
 		}
 
-	
+		//là
 
 	/*------------------------------------------------------------------------------------*/
 		SDL_RenderCopy(app.rendu, app.texture, NULL,&rectangle); // Colle la app.texture ayant pour cadre (rectangle) sur app.rendu
@@ -325,4 +356,4 @@ application dessin_tuile(application app,int nb ){
 
 
 
-// Rediger par Nylls Gersan BOUTOTO
+// Rediger par Nylls Gersan BOUTOTO , Belinda AWUDZA, Guillaume Fromment .
