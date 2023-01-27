@@ -9,6 +9,7 @@
 
 int main(int argc, char *argv[])
 {
+
     SDL_Window *fenetre = NULL;
     SDL_Renderer *rendu = NULL;
     //SDL_Color blanc = {255, 255, 255, 255};
@@ -68,7 +69,7 @@ int main(int argc, char *argv[])
     // Dans cette partie, nous allons charger une police depuis un fichier, 
     // avec une taille de point à 30
 
-    TTF_Font* police = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 30);
+    TTF_Font* police = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 15);
     if (!police)
     {
         fprintf(stderr, "Erreur de création de la police : %s", TTF_GetError());
@@ -104,20 +105,18 @@ int main(int argc, char *argv[])
     // Création de la surface de destination du texte
 
     SDL_Rect DstRect;
-    DstRect.x = (fenetre1->w - TextSurface->w)/2;
-    DstRect.y = (fenetre1->h - TextSurface->h)/2;
+    DstRect.x = (fenetre1->w - TextSurface->w)/4;
+    DstRect.y = (fenetre1->h - TextSurface->h)/4;
     DstRect.w = TextSurface->w;
     DstRect.h = TextSurface->h;
 
 
     //Affiche toute la surface en 100, 100
 
-    SDL_BlitSurface(TextSurface, NULL, fenetre1, &DstRect);
 
 
     //Mise à  jour de la fenêtre
 
-    SDL_UpdateWindowSurface(fenetre);
 
 
 
@@ -132,6 +131,7 @@ int main(int argc, char *argv[])
         SDL_SetRenderDrawColor(rendu, 255, 255, 255, 255);
         SDL_RenderClear(rendu);
         SDL_BlitSurface(TextSurface, NULL, fenetre1, &DstRect);
+        SDL_UpdateWindowSurface(fenetre);
         SDL_RenderPresent(rendu);
     }
 
