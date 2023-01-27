@@ -304,7 +304,7 @@ application dessin_tuile(application app,int nb ){
 			rectangle.x = position_chevaletx+i*largeur_tuile;
 			rectangle.y = position_chevalety;
 		}else{//si i est est  supérieur à 15 on est sur la seconde ligne donc la position y du chevalet ne change pas et on place la tuile à la case i
-			rectangle.x = position_chevaletx+i*largeur_tuile;
+			rectangle.x = position_chevaletx+(i-15)*largeur_tuile;
 			rectangle.y = position_chevalety+hauteur_tuile;
 		}
 
