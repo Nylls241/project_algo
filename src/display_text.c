@@ -108,15 +108,15 @@ int main(int argc, char *argv[])
     // Création de la surface de destination du texte
 
     SDL_Rect DstRect;
-    DstRect.x = 10;
-    DstRect.y = 10;
+    DstRect.x = 0;
+    DstRect.y = 0;
     DstRect.w = TextSurface->w;
     DstRect.h = TextSurface->h;
 
 
     //Affiche toute la surface en 100, 100
 
-    SDL_BlitSurface(TextSurface, NULL, rendu, &DstRect);
+    SDL_BlitSurface(TextSurface, NULL, TextSurface, &DstRect);
 
 
 
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
     // Libère notre surface et notre police 
 
     SDL_FreeSurface(TextSurface);
-    TTF_CloseFont(Font);
+    TTF_CloseFont(police);
 
     SDL_DestroyRenderer(rendu);
     SDL_DestroyWindow(fenetre);
