@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
 
-    /*if (SDL_SetRenderDrawColor(rendu, 255, 255, 255, 255) != 0)
+    if (SDL_SetRenderDrawColor(rendu, 255, 255, 255, 255) != 0)
     {
         fprintf(stderr, "Erreur de changement de la couleur du rendu. : %s", SDL_GetError());
         return EXIT_FAILURE;
@@ -64,11 +64,11 @@ int main(int argc, char *argv[])
     {
         fprintf(stderr, "Erreur SDL_SetRenderDrawColor : %s", SDL_GetError());
         return EXIT_FAILURE;
-    }*/
+    }
 
     // Initialisation de la SDL_ttf
 
-    if (TTF_Init() != 0)
+    /*if (TTF_Init() != 0)
     {
         fprintf(stderr, "Erreur d'initialisation de la SDL_ttf : %s", TTF_GetError());
         return EXIT_FAILURE;
@@ -116,29 +116,34 @@ int main(int argc, char *argv[])
 
     //Affiche toute la surface en 100, 100
 
-    SDL_BlitSurface(TextSurface, NULL, TextSurface, &DstRect);
+    SDL_BlitSurface(TextSurface, NULL, TextSurface, &DstRect);*/
 
 
 
-
+    SDL_Surface* background = SDL_LoadBMP("plateau.bmp");
+    SDL_Texture* background_texture = SDL_CreateTextureFromSurface(rendu, background);
+    SDL_FreeSurface(background);
 
 
 
      
     
-    SDL_Delay(5000);
+    SDL_Delay(500);
+    SDL_RenderPresent(rendu);
+    SDL_Delay(2000);
     SDL_RenderPresent(rendu);
     SDL_Delay(5000);
 
 
+
     // Libère notre surface et notre police 
 
-    SDL_FreeSurface(TextSurface);
-    TTF_CloseFont(police);
+    //SDL_FreeSurface(TextSurface);
+    //TTF_CloseFont(police);
 
     SDL_DestroyRenderer(rendu);
     SDL_DestroyWindow(fenetre);
-    TTF_Quit();
+    //TTF_Quit();
     SDL_Quit();
 
     return EXIT_SUCCESS;
