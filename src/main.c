@@ -2,14 +2,13 @@
 
 int main(void) 
 {
-	application app = prepareScene( app) ;
+	
+	application app = dessin_tuile(app,14);//  on pioche 14 tuile au debut de la partie 
 
-	app = creer_texture(app,dessiner_rectangle(position_plateau_x,position_plateau_y,largeur_ecran,hauteur_ecran)) ;
-
-	presentScene(app) ; 
+	presentScene(app) ; //le jeu est lancé 
 
 	SDL_Delay(16) ;/* Cette attente sert à limiter notre boucle à environ 62 images par seconde et empêche également l'application de tourner à plein régime et de consommer beaucoup trop de temps du CPU.*/
-	input() ;//SDL_Delay(6000) ;//input() ;
+	input() ; //la fenêtre du jeu est lancé
 	destroySDL(app);
 	return 0 ;
 }
