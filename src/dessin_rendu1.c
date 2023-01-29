@@ -356,4 +356,4 @@ reserve[c-1][n-1].valeur =0;
 
 
 
-// Rediger par Nylls Gersan BOUTOTO et Belinda AWUDZA
+// Rediger par Nylls Gersan BOUTOTO, Belinda AWUDZA et Guillaume FROMENT
