@@ -80,7 +80,7 @@ application dessin_chevalet(application app) {
 //fonction qui permet d'initialiser la réserve
 //les tuiles de la même colonne sont donc sur la même ligne
 
-void init_reserve(tuile res[4][14]){//Commente là belinda stp 
+void init_reserve(tuile res[4][14]){
 for(int j=0;j<4;j++){
 	for(int i=0; i<14;i++){
 		tuile t1;
@@ -96,7 +96,7 @@ for(int j=0;j<4;j++){
 /*-------------------------------------------------------------------------------------------------*/
 
 //affichons les tuiles à était écrite à patir de plusieurs code réuni
-application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuile pioché
+application dessin_tuile(application app,int nb ){
 
 	app = dessin_chevalet(app) ; //recupérons le chavalet pour poser les tuiles
 
@@ -124,14 +124,16 @@ application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuil
 		tuile t ;
 		t.valeur = n ;
 		t.couleur = c;
+
 		/*-------------------------------------------------------------*/
 
 
 //A partir d'ici la tuile qui sera affichée est déjà connue
+//on enleve d'abord la tuile de réserve avant de l'afficher
+reserve[c-1][n-1].valeur =0;
 
 		if (t.couleur == 3) //tuile_orange
 	    {
-//				reserve[2][t.valeur-1].valeur=0; // c'est pourquoi là on l'enlève , pour évéter des répétition 
 			switch(t.valeur){
 				case 1 :
 					app.image = SDL_LoadBMP("images/O_01.bmp");
@@ -180,7 +182,6 @@ application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuil
 		else if (t.couleur == 1)//tuile_rouge
 	    {
 			switch(t.valeur){
-//				reserve[0][t.valeur-1].valeur=0;
 				case 1 :
 					app.image = SDL_LoadBMP("images/r_01.bmp");
 					break;
@@ -228,7 +229,6 @@ application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuil
 		else if (t.couleur == 4){// tuile bleu
 
 			switch(t.valeur){
-//				reserve[3][t.valeur-1].valeur=0;
 				case 1 :
 					app.image = SDL_LoadBMP("images/b_01.bmp");
 					break;
@@ -275,7 +275,6 @@ application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuil
 		}
 		else if (t.couleur == 2)//tuile verte
 	    {
-//				reserve[1][t.valeur-1].valeur=0;
 			switch(t.valeur){
 				case 1 :
 					app.image = SDL_LoadBMP("images/g_01.bmp");
@@ -321,6 +320,7 @@ application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuil
 			}
 		}
 
+		/*--------------------------------------------------------------*/
 
 
 	/*--------------------------------------------------------------*/
@@ -356,4 +356,4 @@ application dessin_tuile(application app,int nb ){// nb , pour le nombre de tuil
 
 
 
-// Rediger par Nylls Gersan BOUTOTO , Belinda AWUDZA, Guillaume Fromment .
+// Rediger par Nylls Gersan BOUTOTO et Belinda AWUDZA
