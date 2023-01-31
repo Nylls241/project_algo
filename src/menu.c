@@ -7,7 +7,6 @@ int main(int argc, char* argv[])
 	application app = white_window(app);
 	input();
 	destroySDL(app);
-	//application display_text();
 	
 	
 }

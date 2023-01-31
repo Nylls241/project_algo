@@ -1,6 +1,7 @@
 #ifndef INIT_DRAW_H
 #define INIT_DRAW_H
 
+application fenetre_menu();
 application white_window();
 void input(void);
 int SDL_ErrorQuit(const char *message) ;
