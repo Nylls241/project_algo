@@ -7,7 +7,6 @@
 #include "init_draw.h"
 #include "destroy.h"
 #include <stdlib.h>
-#include "SDL_image.h"
 #include <stdio.h>
 
 
