@@ -41,7 +41,7 @@ joker qui reste sur votre chevalet vous coûtera 30 points négatifs.
 
 # installation de la SDL2 :
 
- Un conseil faite le sur une machine linux , pour ne pas avoir trop de mal  voici la commande :
+ Un conseil faite le sur une machine linux , pour ne pas avoir trop de mal . Voici la commande d'installation sur linux  :
   sudo apt-get install libsdl2-dev. Pour ce qui ne sont pas sous linux , télécharger une machine virtuel (virtualbox par exemple) , toutefois il est possible d'installer la SDL sur d'autre système que linux , mais bon c'est un peu compliqué bizarement .Nous avons essayé de rendre notre projet dynamique de telle sorte qu'une autre machine est besoin d'installer la SDL , mais élasse nous n'avons pas réussi , c'est possible commencez par çà si vous volez avancez sans plus vite sans problème ,en tout cas au niveau de l'entête de la SDL. 
   
   # Fonctions principales devélopper au cours du projet (aspect frontend) :
