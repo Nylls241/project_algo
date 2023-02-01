@@ -1,5 +1,9 @@
 # project_algo
-Rummikub 
+
+
+
+
+Rummikub est le jeu à réaliser dans ce projet .Nous le codons en C avec la biliothèque SDL2. 
 
 #commande pour compiler le code source :
 
