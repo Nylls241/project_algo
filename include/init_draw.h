@@ -10,6 +10,7 @@ application initSDL(void) ;
 application dessin_plateau(application app) ;
 application dessin_chevalet (application app);
 application dessin_tuile(application app,int nb);
+application implemente_rummikub() ; 
 
 
 
