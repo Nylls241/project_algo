@@ -102,7 +102,7 @@ application dessin_tuile(application app,int nb ){
 
 	int n ; //pour le numéro de la tuile
 	int c ;//pour la couleur
-	int chevalet [30] ; //dimension du chevalet 15 * 2
+	//int chevalet [30] ; //dimension du chevalet 15 * 2
 	tuile reserve[4][14]; // la reserve
 	init_reserve(reserve);
 

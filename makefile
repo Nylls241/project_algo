@@ -19,5 +19,5 @@ destroy.o : src/destroy.c
 	gcc -c -Wall src/destroy.c 
 
 clean :
-	rm -f prog *.o
+	rm -f *.o
 
