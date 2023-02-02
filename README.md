@@ -43,7 +43,7 @@ Le joueur qui pose le plus rapidement ses tuiles gagne la partie.
 Les autres joueurs doivent donc additionner les points restant sur leur chevalet. Ces points seront des points négatifs. Un
 joker qui reste sur votre chevalet vous coûtera 30 points négatifs.
 
-NB : Pour pouvoir compiler notre projet vous devez au préalable installez la sdl2 et sdl2_ttf 
+NB : Pour pouvoir compiler notre projet vous devez au préalable installez la sdl2 et sdl2_ttf (voir installation SDL2 et sdl2_ttf ci-dessous ) 
  
 # commande pour compiler le code source :
 
