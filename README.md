@@ -1,6 +1,17 @@
 # project_algo
+Lien utile : 
 
-https://github.com/Nylls241/project_algo.git
+- https://github.com/Nylls241/project_algo.git
+
+- https://www.parallelrealities.co.uk/tutorials/#shooter
+
+- https://wiki.libsdl.org/SDL2/APIByCategory
+
+- https://wiki.libsdl.org/SDL2/Installation
+
+- https://www.youtube.com/watch?v=Lwx9rSgwoDg&list=PLrSOXFDHBtfEh6PCE39HERGgbbaIHhy4j&index=23
+
+
 
 Rummikub est le jeu à réaliser dans ce projet .Nous le codons en C avec la biliothèque SDL2. Pour jouer au Rummikub, il vous faut :
 2 à 4 joueurs.
