@@ -32,7 +32,8 @@ Le joueur qui pose le plus rapidement ses tuiles gagne la partie.
 Les autres joueurs doivent donc additionner les points restant sur leur chevalet. Ces points seront des points négatifs. Un
 joker qui reste sur votre chevalet vous coûtera 30 points négatifs.
 
-
+NB : Pour pouvoir compiler notre projet vous devez au préalable installez la sdl2 et sdl2_ttf 
+ 
 # commande pour compiler le code source :
 
 - make , pour compiler .Il se crée un fichier exécutable prog que vous pouvez exécuter par la suite . Puis faite un make clean pour virer les fichiers objets. NB: commande à excuter en étant dans le dossier du projet (projet_algo) . Si cela ne marche pas faite celle-ci à la place . 
@@ -42,7 +43,18 @@ joker qui reste sur votre chevalet vous coûtera 30 points négatifs.
 # installation de la SDL2 :
 
  Un conseil faite le sur une machine linux , pour ne pas avoir trop de mal . Voici la commande d'installation sur linux  :
-  sudo apt-get install libsdl2-dev. Pour ce qui ne sont pas sous linux , télécharger une machine virtuel (virtualbox par exemple) , toutefois il est possible d'installer la SDL sur d'autre système que linux , mais bon c'est un peu compliqué bizarement .Nous avons essayé de rendre notre projet dynamique de telle sorte qu'une autre machine est besoin d'installer la SDL , mais élasse nous n'avons pas réussi , c'est possible commencez par çà si vous volez avancez sans plus vite sans problème ,en tout cas au niveau de l'entête de la SDL. 
+  sudo apt-get install libsdl2-dev. Pour ce qui ne sont pas sous linux , télécharger une machine virtuel (virtualbox par exemple) , toutefois il est possible d'installer la SDL sur d'autre système que linux , mais bon c'est un peu compliqué bizarement .Nous avons essayé de rendre notre projet dynamique de telle sorte qu'une autre machine est besoin d'installer la SDL , mais élasse nous n'avons pas réussi , c'est possible commencez par çà si vous volez avancez sans plus vite sans problème ,en tout cas au niveau de l'entête de la SDL.
+  
+  
+  #  installation de sdl2_ttf :
+  
+  
+  
+  
+  
+  
+  
+  
   
   # Fonctions principales devélopper au cours du projet (aspect frontend) :
    - initSDL() ; qui initialise la SDL , en chargeant l'affichage de la fenêtre et le rendu 
