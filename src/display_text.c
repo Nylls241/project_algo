@@ -491,7 +491,137 @@ int execution()
     
 
 
+<<<<<<< HEAD
     // GESTION DES EVENEMENTS GRAPHIQUE ET DE DE FONCTIONNEMENT DE NOTRE JEU
+=======
+
+    // CHARGEMENT DES DIFFERENTES IMAGES ET ILLUSTRATIONS
+
+    SDL_Rect back_rect;
+    SDL_Rect p1_rect;
+    SDL_Rect p2_rect;
+    SDL_Rect p3_rect;
+    SDL_Rect p4_rect;
+    SDL_Rect commencer_rect;
+    SDL_Rect quit_rect;
+    SDL_Rect scores_rect;
+
+
+
+
+    back_rect.x = 0;
+    back_rect.y = 0;
+    back_rect.w = 800;
+    back_rect.h = 800;
+
+    /////////////////////////////////
+
+    ///////////////////////////////////
+
+    commencer_rect.x = 137;
+    commencer_rect.y = 600;
+    commencer_rect.w = 526;
+    commencer_rect.h = 50;
+
+    ///////////////////////////////////
+
+    scores_rect.x = 137;
+    scores_rect.y = 670;
+    scores_rect.w = 526;
+    scores_rect.h = 50;
+
+    ///////////////////////////////////
+
+    quit_rect.x = 137;
+    quit_rect.y = 740;
+    quit_rect.w = 526;
+    quit_rect.h = 50;
+
+
+
+    afficher_image("background.bmp", &back_rect, rendu);
+    /*afficher_image("buttons/joueur1.bmp", &p1_rect, rendu);
+    afficher_image("buttons/joueur2.bmp", &p2_rect, rendu);
+    afficher_image("buttons/joueur3.bmp", &p3_rect, rendu);
+    afficher_image("buttons/joueur4.bmp", &p4_rect, rendu);*/
+    afficher_image("buttons/commencer.bmp", &commencer_rect, rendu);
+    afficher_image("buttons/scores.bmp", &scores_rect, rendu);
+    afficher_image("buttons/quitter.bmp", &quit_rect, rendu);
+    SDL_RenderPresent(rendu);
+    //SDL_Delay(10000);
+
+
+
+
+
+
+
+    /*
+
+    // Initialisation de la SDL_ttf
+
+    TTF_Init();
+    if (TTF_Init() != 0)
+    {
+        fprintf(stderr, "Erreur d'initialisation de la SDL_ttf : %s", TTF_GetError());
+        return EXIT_FAILURE;
+    }
+
+    // Dans cette partie, nous allons charger une police depuis un fichier, 
+    // avec une taille de point à 15
+    // /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf : ceci est le chemin de notre police 
+    // qui est ici DejaVuSans-Bold.ttf
+
+    TTF_Font* police = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 15);
+    if (!police)
+    {
+        fprintf(stderr, "Erreur de création de la police : %s", TTF_GetError());
+        return EXIT_FAILURE;
+    }
+
+
+    // Couleur du texte, ici nous utiliserons le rouge.
+
+    SDL_Color TextColor;
+    TextColor.r = 255;
+    TextColor.g = 0;
+    TextColor.b = 0;
+
+
+    // Création de la surface du texte.
+
+
+    SDL_Surface* TextSurface = TTF_RenderText_Solid(police, 
+        "Test de l'affichage de texte sur la SDL2",
+        TextColor);
+
+    if (!TextSurface)
+    {
+        fprintf(stderr, "Erreur de création du rendu du texte : %s", TTF_GetError());
+        return EXIT_FAILURE;
+    }
+
+    // Récupération de la surface de la fenêtre
+
+    SDL_Surface* fenetre1 = SDL_GetWindowSurface(fenetre);
+
+
+    // Création de la surface de destination du texte
+
+    SDL_Rect DstRect;
+    DstRect.x = (fenetre1->w - TextSurface->w)/4;
+    DstRect.y = (fenetre1->h - TextSurface->h)/4;
+    DstRect.w = TextSurface->w;
+    DstRect.h = TextSurface->h;
+
+
+    //Affiche toute la surface en 100, 100
+
+    */
+
+
+    //Mise à  jour de la fenêtre
+>>>>>>> 38d76cabeaff5f202da92043de510ec4f071fe1d
 
 
     SDL_Event event;
