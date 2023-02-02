@@ -1,11 +1,14 @@
 #include "../include/include.h"
 
+// Creation d'une surface rectangulaire à partir d'une texture
 
 void texture_to_rect(SDL_Renderer *rendu, SDL_Texture *texture, SDL_Rect *rectangle)
 {
     SDL_QueryTexture(texture, NULL, NULL, &(rectangle->w), &(rectangle->h));
     SDL_RenderCopy(rendu, texture, NULL, rectangle);
 }
+
+// Fonction pour afficher des images à l'écran
 
 void afficher_image (char *chemin, SDL_Rect *rectangle, SDL_Renderer *rendu)
 {
@@ -25,72 +28,443 @@ void afficher_image (char *chemin, SDL_Rect *rectangle, SDL_Renderer *rendu)
     }
 }
 
-void start(SDL_Renderer *rendu)
+// FONCTION DE CONFIGURATION DES JOUEURS
+
+void menu_joueur(SDL_Renderer *rendu)
 {
-    SDL_Rect back_rect;
+    SDL_Rect background_rect;
     SDL_Rect p1_rect;
     SDL_Rect p2_rect;
     SDL_Rect p3_rect;
     SDL_Rect p4_rect;
+    SDL_Rect back_rect;
+    SDL_Rect pseudo1_rect;
+    SDL_Rect pseudo2_rect;
+    SDL_Rect pseudo3_rect;
+    SDL_Rect pseudo4_rect;
+    SDL_Rect lancer_rect;
+
 
     ///////////////////////////////////
-    back_rect.x = 0;
-    back_rect.y = 0;
-    back_rect.w = 800;
-    back_rect.h = 800;
+
+    background_rect.x = 0;
+    background_rect.y = 0;
+    background_rect.w = 800;
+    background_rect.h = 800;
+
     ///////////////////////////////////
+
+    lancer_rect.x = 137;
+    lancer_rect.y = 670;
+    lancer_rect.w = 526;
+    lancer_rect.h = 50;
+
+    ///////////////////////////////////
+
+    back_rect.x = 137;
+    back_rect.y = 740;
+    back_rect.w = 526;
+    back_rect.h = 50;
+
+    ///////////////////////////////////    
+
 
     p1_rect.x = 20;
-    p1_rect.y = 500;
+    p1_rect.y = 20;
     p1_rect.w = 367;
     p1_rect.h = 50;
 
     ///////////////////////////////////
 
     p2_rect.x = 20;
-    p2_rect.y = 570;
+    p2_rect.y = 90;
     p2_rect.w = 367;
     p2_rect.h = 50;
 
     ///////////////////////////////////
 
-    p3_rect.x = 413;
-    p3_rect.y = 500;
+    p3_rect.x = 20;
+    p3_rect.y = 160;
     p3_rect.w = 367;
     p3_rect.h = 50;
 
     ///////////////////////////////////
 
-    p4_rect.x = 413;
-    p4_rect.y = 570;
+    p4_rect.x = 20;
+    p4_rect.y = 230;
     p4_rect.w = 367;
     p4_rect.h = 50;
 
     ///////////////////////////////////
 
+    pseudo1_rect.x = 397;
+    pseudo1_rect.y = 70;
+    pseudo1_rect.w = 367;
+    pseudo1_rect.h = 50;
+
+    //////////////////////////////////
+
+    pseudo2_rect.x = 397;
+    pseudo2_rect.y = 140;
+    pseudo2_rect.w = 367;
+    pseudo2_rect.h = 50;
+
+    /////////////////////////////////
+
+    pseudo3_rect.x = 397;
+    pseudo3_rect.y = 210;
+    pseudo3_rect.w = 367;
+    pseudo3_rect.h = 50;
+
+    /////////////////////////////////
+
+    pseudo4_rect.x = 397;
+    pseudo4_rect.y = 280;
+    pseudo4_rect.w = 367;
+    pseudo4_rect.h = 50;
+
+    /////////////////////////////////
 
 
-    afficher_image("background.bmp", &back_rect, rendu);
+    afficher_image("images/jeu-rummikub.bmp", &background_rect, rendu);
     afficher_image("buttons/joueur1.bmp", &p1_rect, rendu);
     afficher_image("buttons/joueur2.bmp", &p2_rect, rendu);
     afficher_image("buttons/joueur3.bmp", &p3_rect, rendu);
     afficher_image("buttons/joueur4.bmp", &p4_rect, rendu);
+    //afficher_image("buttons/lancer.bmp", &lancer_rect, rendu);
+    //afficher_image("buttons/retour.bmp", &back_rect, rendu);
+
+    // Dessinons les lignes de renseignement des pseudos des joueurs
+
+    SDL_RenderDrawLine(rendu, 397, 70, 764, 70);
+    SDL_RenderDrawLine(rendu, 397, 140, 764, 140);
+    SDL_RenderDrawLine(rendu, 397, 210, 764, 210);
+    SDL_RenderDrawLine(rendu, 397, 280, 764, 280);
 
     SDL_RenderPresent(rendu);
 }
 
-int main(int argc, char *argv[])
+// FONCTION DE PRESENTATION DE LA FENETRE D'ACCUEIL
+
+void accueil(SDL_Renderer *rendu)
+{
+    SDL_Rect background_rect;
+    SDL_Rect commencer_rect;
+    SDL_Rect quit_rect;
+    SDL_Rect scores_rect;
+
+    ///////////////////////////////////
+
+    background_rect.x = 0;
+    background_rect.y = 0;
+    background_rect.w = 800;
+    background_rect.h = 800;
+
+    //////////////////////////////////
+
+    commencer_rect.x = 137;
+    commencer_rect.y = 600;
+    commencer_rect.w = 526;
+    commencer_rect.h = 50;
+
+    /////////////////////////////////
+
+    scores_rect.x = 137;
+    scores_rect.y = 670;
+    scores_rect.w = 526;
+    scores_rect.h = 50;
+
+    /////////////////////////////////
+
+    quit_rect.x = 137;
+    quit_rect.y = 740;
+    quit_rect.w = 526;
+    quit_rect.h = 50;
+
+    ////////////////////////////////
+    ////////////////////////////////
+
+    afficher_image("background.bmp", &background_rect, rendu);
+    afficher_image("buttons/commencer.bmp", &commencer_rect, rendu);
+    afficher_image("buttons/scores.bmp", &scores_rect, rendu);
+    afficher_image("buttons/quitter.bmp", &quit_rect, rendu);
+
+    SDL_RenderPresent(rendu);
+}
+
+// Cette fonction nous servira pour afficher du texte à l'écran
+
+void afficher_texte(SDL_Renderer *rendu, char *texte, int x, int y)
 {
 
+    // INITIALISATION DE LA LIBRAIRIE SDL_TTF
+
+
+     if (TTF_Init() != 0)
+    {
+        printf("Erreur d'initialisation de la TTF >");
+    }
+
+    // Charge la police depuis un fichier, avec une taille de police de 45
+
+
+    TTF_Font *police = TTF_OpenFont("police1.ttf", 20);
+
+    // Si la police est nulle, alors il y'a erreur
+
+    if (police == NULL)
+    {
+        printf("Erreur de chargement de la police >>:%s\n", TTF_GetError());
+    }
+
+    SDL_Surface *TextSurface;
+    SDL_Texture *TextTexture;
+
+    // Couleur du texte(couleur de code #33FCFF -> (BLEU-CIEL))
+
+    SDL_Color TextColor;
+    TextColor.r = 51;
+    TextColor.g = 252;
+    TextColor.b = 255;
+
+
+    // Creation de la surface SDL sur laquelle on rendra notre texte 
+
+    TextSurface = TTF_RenderText_Solid(police, texte, TextColor);
+
+    // Verifions ici si la surface est bien chargee
+
+    if (TextSurface == NULL)
+    {
+        printf("Erreur de creation de surface de rendu du texte :%s\n", TTF_GetError());
+    }
+
+    TextTexture = SDL_CreateTextureFromSurface(rendu, TextSurface);
+    if (TextTexture == NULL)
+    {
+         printf("Erreur lors de la creation de la texture :%s\n", SDL_GetError());
+    }
+
+    // Surface de destination de TextSurface
+
+    SDL_Rect DstRect;
+    DstRect.x = x;
+    DstRect.y = y;
+    DstRect.w = 367;
+    DstRect.h = 50;
+
+    // Mettons notre texture dans un rectangle
+
+    SDL_QueryTexture(TextTexture, NULL, NULL, &(DstRect.w), &(DstRect.h));
+    SDL_RenderCopy(rendu, TextTexture, NULL, &DstRect);
+
+    // AFFICHONS LE RESULTAT
+    SDL_RenderPresent(rendu);
+
+    // Liberation des ressources
+
+    // SDL_FreeSurface(TextSurface);
+    // TTF_CloseFont(police);
+
+}
+
+// Cette fonction calcule la longueur d'une chaine de caractere
+
+int string_length(const char* str)
+{
+    int len = 0;
+    while (str[len] != '\0')
+    {
+        len++;
+    }
+    return len;
+}
+
+// Cette fonction concatène deux chaînes de caracteres prises en parametre
+
+char* string_concat(const char* str1, const char* str2)
+{
+    int len1 = string_length(str1);
+    int len2 = string_length(str2);
+    char* result = (char*)malloc(len1 + len2 + 1);
+    strcpy(result, str1);
+    strcpy(result + len1, str2);
+    return result;
+}
+
+// FONCTION POUR LA SAISIE DU TEXTE PAR L'UTILISATEUR
+
+// char* input_text(SDL_Renderer *rendu, int x, int y)
+// {
+//     SDL_bool run = SDL_TRUE;
+//     SDL_Event ev;
+
+//     char *text ;
+
+//     SDL_StartTextInput();
+
+//     while(run)
+//     {
+//         while(SDL_PollEvent(&ev) != 0 )
+//         {
+//             // Capture des evenements QUITTER et du clavier
+
+//             if (ev.type == SDL_QUIT)
+//             {
+//                 run = SDL_FALSE;
+//                 break;
+//             }
+//             if (ev.type == SDL_TEXTINPUT || ev.type == SDL_KEYDOWN)
+//             {
+//                 if (ev.type == SDL_KEYDOWN && ev.key.keysym.sym == SDLK_BACKSPACE && string_length(text) > 0)
+//                 {
+//                     text[ string_length(text) - 1 ] = '\0';
+//                     afficher_texte(rendu, text, x, y);
+//                     SDL_RenderPresent(rendu);
+//                 }
+//                 else if (ev.type == SDL_KEYDOWN && ev.key.keysym.sym == SDLK_BACKSPACE && string_length(text) <= 0)
+//                 {
+//                     run = SDL_FALSE;
+
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+//string_concat(text, alphabet[i]);
+
+
+void modifier_pseudo(int *cas,char lettre,char *pseudo1, char *pseudo2, char *pseudo3, char *pseudo4){
+
+    switch(*cas)
+    {
+    case 1:
+        if (string_length(pseudo1) < 6)
+        {
+            string_concat(pseudo1, &lettre);
+        }
+        break;
+    case 2:
+        if (string_length(pseudo2) < 6)
+        {
+            string_concat(pseudo2, &lettre);
+        }
+        break;
+    case 3:
+        if (string_length(pseudo3) < 6)
+        {
+            string_concat(pseudo3, &lettre);
+        }
+        break;
+    case 4:
+        if (string_length(pseudo4) < 6)
+        {
+            string_concat(pseudo4, &lettre);
+        }
+        break;
+    default:
+        break;
+    }
+}
+
+
+
+void pos_curseur(int* niv, int ref, SDL_Rect* pseudo_rect){
+
+    if(ref == (-1)){
+
+        if(*niv > 1){
+            *niv = *niv - 1 ;
+            pseudo_rect->y = pseudo_rect->y - 70 ;
+        }
+
+    }
+
+    else if( ref == 1){
+
+        if(*niv < 4){
+            *niv = *niv + 1 ;
+            pseudo_rect->y = pseudo_rect->y + 70 ;
+        }
+
+    }
+}
+
+
+void move_last_caracter(char *mot){
+    mot[string_length(mot) - 1] = '\0';
+}
+
+
+
+void move_last_caracter_pseudo(int *cas, char *pseudo1, char *pseudo2, char *pseudo3, char *pseudo4)
+{
+    switch(*cas)
+    {
+
+        case 1:
+            if (string_length(pseudo1) > 0)
+            {
+                move_last_caracter(pseudo1);
+            }
+            break;
+        case 2:
+            if (string_length(pseudo2) > 0)
+            {
+                move_last_caracter(pseudo2);
+            }
+            break;
+        case 3:
+            if (string_length(pseudo3) > 0)
+            {
+                move_last_caracter(pseudo3);
+            }
+            break;
+        case 4:
+            if (string_length(pseudo4) > 0)
+            {
+                move_last_caracter(pseudo4);
+            }
+            break;
+        default:
+            break;
+
+    }
+}
+
+
+
+// LA FONCTION SUIVANTE GERE ET AFFICHE LE MENU DE NOTRE JEU(AVANT-JEU).
+
+int execution()
+{
     SDL_Window *fenetre = NULL;
     SDL_Renderer *rendu = NULL;
+
     SDL_bool condition = SDL_TRUE;
-    
+    SDL_Rect *pseudo_rect;
+
+    int position = 1;
+
+    char pseudo1_name[10];
+    char pseudo2_name[10];
+    char pseudo3_name[10];
+    char pseudo4_name[10];
+
+    pseudo_rect->x = 397;
+    pseudo_rect->y = 20;
+    pseudo_rect->w = 367;
+    pseudo_rect->h = 50;
+
+    char texte1[] = "Veuillez indiquer les pseudos des joueurs dans les parties reservees ci-dessus";
+
+     // INITIALISATION DE LA SDL
 
     if(SDL_Init(SDL_INIT_VIDEO != 0))
     {
         fprintf(stderr, "Erreur d'initialisation de la SDL : %s", SDL_GetError());
-        return EXIT_FAILURE;
     }
 
     // Création de la fenêtre
@@ -100,222 +474,51 @@ int main(int argc, char *argv[])
     if(fenetre == NULL)
     {
         fprintf(stderr, "Erreur de création de la fenêtre: %s", SDL_GetError());
-        return EXIT_FAILURE;
     }
 
 
     // Création du rendu
+
     rendu = SDL_CreateRenderer(fenetre, -1, SDL_RENDERER_ACCELERATED);
     if (rendu == NULL)
     {
         fprintf(stderr, "Erreur de création du rendu : %s", SDL_GetError());
-        return EXIT_FAILURE;
     }
 
+    // AFFICHAGE DE LA PREMIERE FENETRE( celle qui contient le menu principal)
 
-    /*SDL_Surface *background = NULL;
-    SDL_Texture *texture_backgroung = NULL;*/
+    accueil(rendu);
+    
 
 
-
-    // CHARGEMENT DES DIFFERENTES IMAGES ET ILLUSTRATIONS
-
-    SDL_Rect back_rect;
-    SDL_Rect p1_rect;
-    SDL_Rect p2_rect;
-    SDL_Rect p3_rect;
-    SDL_Rect p4_rect;
-    SDL_Rect commencer_rect;
-    SDL_Rect quit_rect;
-    SDL_Rect scores_rect;
-
-
-
-
-    back_rect.x = 0;
-    back_rect.y = 0;
-    back_rect.w = 800;
-    back_rect.h = 800;
-
-    /////////////////////////////////
-
-    ///////////////////////////////////
-
-    commencer_rect.x = 137;
-    commencer_rect.y = 600;
-    commencer_rect.w = 526;
-    commencer_rect.h = 50;
-
-    ///////////////////////////////////
-
-    scores_rect.x = 137;
-    scores_rect.y = 670;
-    scores_rect.w = 526;
-    scores_rect.h = 50;
-
-    ///////////////////////////////////
-
-    quit_rect.x = 137;
-    quit_rect.y = 740;
-    quit_rect.w = 526;
-    quit_rect.h = 50;
-
-
-
-    afficher_image("background.bmp", &back_rect, rendu);
-    /*afficher_image("buttons/joueur1.bmp", &p1_rect, rendu);
-    afficher_image("buttons/joueur2.bmp", &p2_rect, rendu);
-    afficher_image("buttons/joueur3.bmp", &p3_rect, rendu);
-    afficher_image("buttons/joueur4.bmp", &p4_rect, rendu);*/
-    afficher_image("buttons/commencer.bmp", &commencer_rect, rendu);
-    afficher_image("buttons/scores.bmp", &scores_rect, rendu);
-    afficher_image("buttons/quitter.bmp", &quit_rect, rendu);
-    SDL_RenderPresent(rendu);
-    //SDL_Delay(10000);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-
-    // Initialisation de la SDL_ttf
-
-    TTF_Init();
-    if (TTF_Init() != 0)
-    {
-        fprintf(stderr, "Erreur d'initialisation de la SDL_ttf : %s", TTF_GetError());
-        return EXIT_FAILURE;
-    }
-
-    // Dans cette partie, nous allons charger une police depuis un fichier, 
-    // avec une taille de point à 15
-    // /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf : ceci est le chemin de notre police 
-    // qui est ici DejaVuSans-Bold.ttf
-
-    TTF_Font* police = TTF_OpenFont("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 15);
-    if (!police)
-    {
-        fprintf(stderr, "Erreur de création de la police : %s", TTF_GetError());
-        return EXIT_FAILURE;
-    }
-
-
-    // Couleur du texte, ici nous utiliserons le rouge.
-
-    SDL_Color TextColor;
-    TextColor.r = 255;
-    TextColor.g = 0;
-    TextColor.b = 0;
-
-
-    // Création de la surface du texte.
-
-
-    SDL_Surface* TextSurface = TTF_RenderText_Solid(police, 
-        "Test de l'affichage de texte sur la SDL2",
-        TextColor);
-
-    if (!TextSurface)
-    {
-        fprintf(stderr, "Erreur de création du rendu du texte : %s", TTF_GetError());
-        return EXIT_FAILURE;
-    }
-
-    // Récupération de la surface de la fenêtre
-
-    SDL_Surface* fenetre1 = SDL_GetWindowSurface(fenetre);
-
-
-    // Création de la surface de destination du texte
-
-    SDL_Rect DstRect;
-    DstRect.x = (fenetre1->w - TextSurface->w)/4;
-    DstRect.y = (fenetre1->h - TextSurface->h)/4;
-    DstRect.w = TextSurface->w;
-    DstRect.h = TextSurface->h;
-
-
-    //Affiche toute la surface en 100, 100
-
-    */
-
-
-    //Mise à  jour de la fenêtre
+    // GESTION DES EVENEMENTS GRAPHIQUE ET DE DE FONCTIONNEMENT DE NOTRE JEU
 
 
     SDL_Event event;
 
-
+    
     while (condition) 
     {
         
-        while (SDL_PollEvent(&event)) {
+        while (SDL_PollEvent(&event))
+        {
             switch (event.type)
             {
+
+
                 case SDL_MOUSEBUTTONDOWN :
                     if (137 <= event.button.x && event.button.x<= 663 && 600<= event.button.y &&event.button.y<= 650)
                     {
-                        start(rendu);
+                        menu_joueur(rendu);
+                        afficher_texte(rendu, texte1, 20, 300);
+                        if (137 <= event.button.x && event.button.x<= 663 && 740<= event.button.y &&event.button.y<= 790)
+                        {
+                            accueil(rendu);
+                        }
+                        else if (137 <= event.button.x && event.button.x<= 663 && 670<= event.button.y &&event.button.y<= 720)
+                        {
+                            printf("<<<<<------ Vous avez clique sur le bouton LANCER PARTIE ------>>>>>");
+                        }
                     }
                     else if (137 <= event.button.x && event.button.x<= 663 && 670<= event.button.y &&event.button.y<= 720)
                     {
@@ -325,22 +528,254 @@ int main(int argc, char *argv[])
                     {
                         printf("Vous avez clique sur le bouton quitter.");
                     }
+                    // else if (397 <= event.button.x && event.button.x<= 764 && 20<= event.button.y &&event.button.y<= 70)
+                    // {
+                    //     //char *text = 
+                    //     // input_text(rendu, 397, 20);
+                    //     // printf("\n%s\n", text);
+                    //     // afficher_texte(rendu, text, 397, 20);
+                    // }
+                    // else if (397 <= event.button.x && event.button.x<= 764 && 90<= event.button.y &&event.button.y<= 140)
+                    // {
+                    //     //input_text();
+                    // }
+                    // else if (397 <= event.button.x && event.button.x<= 764 && 160<= event.button.y &&event.button.y<= 210)
+                    // {
+                    //     //input_text();
+                    // }
+                    // else if (397 <= event.button.x && event.button.x<= 764 && 210<= event.button.y &&event.button.y<= 280)
+                    // {
+                    //     //input_text();SDL_Rect* pseudo_rect
+                    // }
                     break;
-                case SDL_QUIT :
-                    condition = SDL_FALSE;
-                    break;
-                default :
-                    break;
+
+
+                // SDL_StartTextInput();
+                // case SDL_KEYDOWN:
+
+
+                //     if (event.key.keysym.sym == SDLK_a){ // Si la touche enfoncee est la touche "a" du clavier
+                //                                          // C'est pareil pour les touches qui suivent.
+                //                                          // ICI ON AFFICHE LA LETTRE A
+                    
+                //         modifier_pseudo(&position, 'A', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_b)
+                //     // ICI ON AFFICHE LA LETTRE B
+                //     {
+                //         modifier_pseudo(&position, 'B', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_c)
+                //     // ICI ON AFFICHE LA LETTRE C
+                //     {
+                //         modifier_pseudo(&position, 'C', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_d)
+                //     // ICI ON AFFICHE LA LETTRE D
+                //     {
+                //         modifier_pseudo(&position, 'D', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_e)
+                //     // ICI ON AFFICHE LA LETTRE E
+                //     {
+                //         modifier_pseudo(&position, 'E', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_f)
+                //     // ICI ON AFFICHE LA LETTRE F
+                //     {
+                //         modifier_pseudo(&position, 'F', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_g)
+                //     // ICI ON AFFICHE LA LETTRE G
+                //     {
+                //         modifier_pseudo(&position, 'H', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_h)
+                //     // ICI ON AFFICHE LA LETTRE H
+                //     {
+                //         modifier_pseudo(&position, 'H', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_i)
+                //     // ICI ON AFFICHE LA LETTRE I
+                //     {
+                //         modifier_pseudo(&position, 'I', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_j)
+                //     // ICI ON AFFICHE LA LETTRE J
+                //     {
+                //         modifier_pseudo(&position, 'J', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_k)
+                //     // ICI ON AFFICHE LA LETTRE K
+                //     {
+                //         modifier_pseudo(&position, 'K', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_l)
+                //     // ICI ON AFFICHE LA LETTRE L
+                //     {
+                //         modifier_pseudo(&position, 'L', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_m)
+                //     // ICI ON AFFICHE LA LETTRE M
+                //     {
+                //         modifier_pseudo(&position, 'M', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_n)
+                //     // ICI ON AFFICHE LA LETTRE N
+                //     {
+                //         modifier_pseudo(&position, 'N', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_o)
+                //     // ICI ON AFFICHE LA LETTRE O
+                //     {
+                //         modifier_pseudo(&position, 'O', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_p)
+                //     // ICI ON AFFICHE LA LETTRE P
+                //     {
+                //         modifier_pseudo(&position, 'P', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_q)
+                //     // ICI ON AFFICHE LA LETTRE Q
+                //     {
+                //         modifier_pseudo(&position, 'Q', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_r)
+                //     // ICI ON AFFICHE LA LETTRE R
+                //     {
+                //         modifier_pseudo(&position, 'R', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_s)
+                //     // ICI ON AFFICHE LA LETTRE S
+                //     {
+                //         modifier_pseudo(&position, 'S', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_t)
+                //     // ICI ON AFFICHE LA LETTRE T
+                //     {
+                //         modifier_pseudo(&position, 'T', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_u)
+                //     // ICI ON AFFICHE LA LETTRE U
+                //     {
+                //         modifier_pseudo(&position, 'U', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_v)
+                //     // ICI ON AFFICHE LA LETTRE V
+                //     {
+                //         modifier_pseudo(&position, 'V', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_w)
+                //     // ICI ON AFFICHE LA LETTRE W
+                //     {
+                //         modifier_pseudo(&position, 'W', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_x)
+                //     // ICI ON AFFICHE LA LETTRE X
+                //     {
+                //         modifier_pseudo(&position, 'X', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_y)
+                //     // ICI ON AFFICHE LA LETTRE Y
+                //     {
+                //         modifier_pseudo(&position, 'Y', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if (event.key.keysym.sym == SDLK_z)
+                //     // ICI ON AFFICHE LA LETTRE Z
+                //     {
+                //         modifier_pseudo(&position, 'Z', pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+
+                //     else if(event.key.keysym.sym == SDLK_BACKSPACE)
+                //     {
+                //         move_last_caracter_pseudo(&position, pseudo1_name, pseudo2_name, pseudo3_name, pseudo4_name);
+                //     }
+                //     else if (event.key.keysym.sym == SDLK_UP)
+                //     {
+                //         pos_curseur(&position, -1, pseudo_rect);
+                //     }
+                //     else if (event.key.keysym.sym == SDLK_DOWN)
+                //     {
+                //         pos_curseur(&position, -1, pseudo_rect);
+                //     }
+                //     else{}
+                //     break;
+
+
+                // case SDL_QUIT:
+
+                //     condition = SDL_FALSE;
+                //     break;
+
+                // default :
+                //     break;
             }
+
+            afficher_texte(rendu, pseudo1_name, 397, 20);
+            afficher_texte(rendu, pseudo2_name, 397, 90);
+            afficher_texte(rendu, pseudo3_name, 397, 160);
+            afficher_texte(rendu, pseudo4_name, 397, 210);
+
+            SDL_RenderPresent(rendu);
         }
+        SDL_UpdateWindowSurface(fenetre);
         
     }
 
-    //TTF_CloseFont(police);
-    //SDL_FreeSurface(TextSurface);
+
+    // LIBERATION DES RESSOURCES
+
+    // SDL_FreeSurface(TextSurface);
+    // TTF_CloseFont(police);
+
+    SDL_StopTextInput();
+    TTF_Quit();
     SDL_DestroyRenderer(rendu);
     SDL_DestroyWindow(fenetre);
-    SDL_Quit();
+    
+    
+    // return 0;
 
-    return EXIT_SUCCESS;
 }
+
+
+int main(int argc, char *argv[])
+{
+
+    execution();
+
+    SDL_Quit();
+    
+    return 0;
+}
+
+
+
+
+
+// NOTE : CE TRAVAIL A ETE EFFECTUE PAR "OSCAR BOOG" ET "SALAMATA MBAYE".

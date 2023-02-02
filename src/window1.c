@@ -17,14 +17,14 @@ application white_window()
 	app.fenetre = SDL_CreateWindow("RUMMIKUB",                             // Titre de la fenetre
 														SDL_WINDOWPOS_CENTERED,   //abscisse (x)
 														SDL_WINDOWPOS_CENTERED,   // ordonnee (y)
-														1280, 720,                 // largeur et hauteur de la fénétre en pixels
-														SDL_WINDOW_SHOWN );         //Drapeau : on peut aussi mettre 0 par défaut  
+														1280, 720,                // largeur et hauteur de la fénétre en pixels
+														SDL_WINDOW_SHOWN );       //Drapeau : on peut aussi mettre 0 par défaut  
 
 
 
-	app.rendu = SDL_CreateRenderer(app.fenetre,                             // Fênêtre dans laquelle on met le rendu
-								  -1,                                 //Pour gérer le driver de l'affichage
-								  SDL_RENDERER_SOFTWARE               // Rendu logiciel        
+	app.rendu = SDL_CreateRenderer(app.fenetre,               // Fênêtre dans laquelle on met le rendu
+								  -1,                         //Pour gérer le driver de l'affichage
+								  SDL_RENDERER_SOFTWARE       // Rendu logiciel        
 								  );
 
 
@@ -39,13 +39,10 @@ application white_window()
 
 
     SDL_RenderCopy(app.rendu, app.texture, NULL, NULL);
-    
-
-
-	
+  
 	SDL_RenderPresent(app.rendu);
-   
-    //SDL_DestroyTexture(app.texture);
+
+	 
 	return app;
 
 
