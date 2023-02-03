@@ -418,6 +418,7 @@ char *execution()
     SDL_Rect pseudo2_rectangle;
     SDL_Rect pseudo3_rectangle;
     SDL_Rect pseudo4_rectangle;
+    
 
 
 
@@ -502,7 +503,6 @@ char *execution()
 
     while (condition) 
     {
-        SDL_bool has_type = SDL_FALSE;
         
         while (SDL_PollEvent(&event))
         {
@@ -514,7 +514,12 @@ char *execution()
                     if (137 <= event.button.x && event.button.x<= 663 && 600<= event.button.y &&event.button.y<= 650)
                     {
                         //printf("<<<<<------ Vous avez clique sur le bouton COMMENCER ------>>>>>");
+                        SDL_Quit(); //ici
+                        //Notre première fenêtre se ferme ici
+                        // Et on affiche ensuite la fenêtre de jeu
                         implemente_rummikub();
+                        
+                        
                     }
                     else if (137 <= event.button.x && event.button.x<= 663 && 670<= event.button.y &&event.button.y<= 720)
                     {
