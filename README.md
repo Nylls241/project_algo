@@ -3,7 +3,7 @@
 Rummikub est le jeu à réaliser dans ce projet .Nous le codons en C avec la biliothèque SDL2. Pour jouer au Rummikub, il vous faut :
 2 à 4 joueurs.
 52 tuiles sur lesquelles sont inscrits des chiffres de 1 à 13. Les chiffres peuvent être de couleurs jaune, rouge,
-orange ou bleu.
+orange ou bleu. Chacune de ces 52 tuiles existent en deux exemplaires.
 4 tuiles joker sur lesquelles apparaît le visage d’un bonhomme coloré (un joker orange , jaune , rouge et bleu) . Ces tuiles vous permettront deremplacer n’importe qu’elle autre tuile.
 4 chevalets pour poser vos tuiles.Le but du jeu
 Être le premier à poser toutes ses plaques en formant des combinaisons de chiffres de la manière la plus judicieuse.
@@ -39,7 +39,7 @@ NB : S'il vous plaît , lisez attentivement le Guide du projet afin de mieux com
 1 - installation de la SDL2 :
 
  Voici la commande d'installation sur linux  :
-  sudo apt-get install libsdl2-dev. Pour ce qui ne sont pas sous linux , télécharger une machine virtuel (virtualbox par exemple) , toutefois il est possible d'installer la SDL sur d'autre système que linux , mais bon c'est un peu complexe . Nous avons essayé de rendre notre projet dynamique de telle sorte qu'une autre machine est besoin d'installer la SDL , mais élasse nous n'avons pas réussi , c'est possible commencez par çà si vous volez avancez  plus vite sans problème surtout si vous travailler en groupe . si vous voulez plus d'information sur l'installation de la SDL sur machine sous linux ou autres OS , veuillez cliquer sur le lien suivant : https://wiki.libsdl.org/SDL2/Installation.
+  sudo apt-get install libsdl2-dev. Pour une machine n'étant pas sous linux, téléchargez une machine virtuelle (virtualbox par exemple), il est cependant possible d'installer la SDL sur un autre système que linux mais c'est complexe. Nous avons essayé de rendre notre projet dynamique, pour qu'il ne soit pas nécessaire d'installer séparément la SDL, mais nous n'avons pas réussi. Dans les améliorations possibles, il serait intéressant de commencer par ce point, plus d'informations sur : https://wiki.libsdl.org/SDL2/Installation.
   
   2 - installation de quelques librairies additionnelles pour la SDL :
   
@@ -53,13 +53,13 @@ NB : S'il vous plaît , lisez attentivement le Guide du projet afin de mieux com
  3 - guide d'utilisation du dossier project_algo : 
  
  Pour commencer , lorsque vous entrez dans le dossier project_algo vous verrez 2 dossiers (include et src) et 2 fichiers (makefile et README.md que vous êtes entrain de lire en ce moment) .
-  - Dans le dossier include se trouvent tous les fichiers d'entêtes du projet notemant , defs.h qui contient toutes les définitions   des constantes écritent dans les fichiers sources , destroy.h qui contient les prothotypes des fonctions  pour libération des réssources quant-on quitte la SDL ou l'un de ses composants , include.h est le fichier où est contenu tous les #include du projet , notemment la librairie SDL , stdio etc ... vous remarquerez que dans tous nos fichiers sources du projet( voir project_algo/src) , il y'a un seul chemin qui est : "../include/include.h . Et enfin deux autres fichiers du dossier include , notemmant init_draw.h qui contient tous les protypes des fonctions principales du menu , jusqu'à l'implémentation du Rummikub et le fichier structures.h qui contient toutes les structures du jeu . 
-  - Dans le dossier src , contient tous les fichiers sources et quelques autres dossiers important , notamment le dossier images qui contient toutes les images des tuiles , le dossier boutton qui contient tous les boutons du menu du jeu , et fonts contient la police des écritures du menu . Pour le menu du jeu , c'est le fichier display_text.c où est contenu toutes les fonctions du menu , jusqu'à l'événement pour ouvrir(lorsqu'on clique sur commencez)  la fenêtre principale du jeu . les fichiers sources qui crée tout çà pour la fenêtre qui s'ouvre lorque clique sur "commencez" sont : init.c ,dessin_rendu1.c , input.c , destroy.c (pour mieux comprendre lisez s'il vous plaît les fichiers sources énumérés ci-après dans l'ordre) . Et enfin , le main.c appel une seule fonction(execution)  qui fait tous le travail .
+  - Dans le dossier include se trouvent tous les fichiers d'entêtes du projet notamment , defs.h qui contient toutes les définitions   des constantes écritent dans les fichiers sources , destroy.h qui contient les prototypes des fonctions  pour libération des réssources quant-on quitte la SDL ou l'un de ses composants , include.h est le fichier où est contenu tous les #include du projet , notemment la librairie SDL , stdio etc ... vous remarquerez que dans tous nos fichiers sources du projet( voir project_algo/src) , il y'a un seul chemin qui est : "../include/include.h . Et enfin deux autres fichiers du dossier include , notamment init_draw.h qui contient tous les prototypes des fonctions principales du menu , jusqu'à l'implémentation du Rummikub et le fichier structures.h qui contient toutes les structures du jeu . 
+  - Dans le dossier src , sont contenus tous les fichiers sources et quelques autres dossiers importants , notamment le dossier images qui contient toutes les images des tuiles , le dossier bouton qui contient tous les boutons du menu du jeu , et fonts contient la police des écritures du menu . Pour le menu du jeu , c'est le fichier display_text.c où est contenu toutes les fonctions du menu , jusqu'à l'évènement pour ouvrir(lorsqu'on clique sur commencez)  la fenêtre principale du jeu . Les fichiers sources s'occupant de la fenêtre s'ouvrant lorsque l'on clique sur "commencez" sont : init.c, dessin_rendu1.c, input.c, destroy.c (pour mieux comprendre lisez s'il vous plaît les fichiers sources énumérés ci-contre dans l'ordre). Et enfin, le main.c appelle une seule fonction(execution)  qui fait tout le travail .
   
-  4 - compilez le projet pour lancez le jeu : 
+  4 - compilez le projet pour lancer le jeu : 
 
-- make , pour compiler .Il se crée un fichier exécutable prog que vous pouvez exécuter par la suite . Puis faite un make clean pour virer les fichiers objets. 
-NB: commande à excuter en entrant dans le dossier du projet (project_algo) . Si cela ne marche pas faite celle-ci à la place . 
+- make , pour compiler. Il crée un fichier exécutable prog que vous pouvez exécuter par la suite . Puis faites un make clean pour enlever les fichiers objets. 
+NB: commande à exécuter en entrant dans le dossier du projet (project_algo) . Si cela ne marche pas faite celle-ci à la place . 
 
 - gcc main.c display_text.c init.c dessin_rendu1.c input.c destroy.c $(sdl2-config --cflags --libs) -lSDL2_ttf  . 
 NB : vous devez être dans le dossier src du projet pour que cette commande marche .
@@ -76,4 +76,4 @@ NB : vous devez être dans le dossier src du projet pour que cette commande marc
 
 - https://www.youtube.com/watch?v=Lwx9rSgwoDg&list=PLrSOXFDHBtfEh6PCE39HERGgbbaIHhy4j&index=23
   
-  // Rédigez par Nylls Gersan BOUTOTO
+  // Rédigé par Nylls Gersan BOUTOTO
