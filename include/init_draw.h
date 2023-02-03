@@ -9,8 +9,24 @@ application dessine_plateau(application app) ;
 application prepareScene(application app ) ;
 void presentScene(application app ) ;
 application initSDL(void) ;
-application creer_texture(application app,SDL_Rect rectangle) ;
-SDL_Rect dessiner_rectangle(int x , int y , int w ,int h);
-application white_window();
+
+application dessin_plateau(application app) ;
+application dessin_chevalet (application app);
+application dessin_tuile(application app,int nb);
+application implemente_rummikub() ; 
+
+
+
+//int reserve [15] [5]; //permet de "stocker" les tuiles, numéro, puis couleur
+int* initScore(int scores[]);
+int* finalScore(int scores[], chevalet chevalets[]);
+void afficheScore(int scores[]);
+void sauvegardeScore(int scores);
+int initTour();
+int nextTurn(int ot, int nbj);
+int isMyTurn(int t, int idJoueur);
+app_che pioche(int nb, app_che ac);
+void initReserve();
+
 
 #endif 

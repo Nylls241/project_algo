@@ -33,8 +33,11 @@ typedef struct plateau{
     combinaison list [40]; // permet de stocker les combinaisons à afficher
 } plateau;
 
-
-
+//utilisée pour le return de pioche
+typedef struct app_che{
+    application app;
+    chevalet che;
+} app_che;
 
 
 
