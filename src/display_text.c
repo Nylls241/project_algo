@@ -498,6 +498,7 @@ char *execution()
     SDL_Event event;
 
     
+    SDL_StartTextInput();
 
     while (condition) 
     {
@@ -705,7 +706,7 @@ char *execution()
 
 
     // LIBERATION DES RESSOURCES
-    
+    SDL_StopTextInput();
     TTF_Quit();
     SDL_DestroyRenderer(rendu);
     SDL_DestroyWindow(fenetre);
@@ -714,17 +715,20 @@ char *execution()
 }
 
 
-int main(int argc, char *argv[])
-{
-    SDL_StartTextInput();
-    execution();
-    SDL_StopTextInput();
+// int main(int argc, char *argv[])
+// {
     
-    return 0;
-}
+//     execution();
+    
+    
+//     return 0;
+// }
 
 
 
 
 
 // NOTE : CE TRAVAIL A ETE EFFECTUE PAR "OSCAR BOOG" ET "SALAMATA MBAYE".
+// NOUS AVONS EU DES DIFFICULTES POUR LA GESTION DES EVENEMENTS DE SAISIE DE TEXTE
+// IL ETAIT JUSTEMENT DÛ AU QUE NOUS NE POUVIONS PAS RECUPERER LE TEXTE SAISI
+// DU COUP NOUS AVONS ABANDONNE LA SAISIE DES NOMS PAR L'UTILISATEUR
