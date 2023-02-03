@@ -56,6 +56,8 @@ NB : Pour pouvoir compiler notre projet vous devez au préalable installez la sd
  Un conseil faite le sur une machine linux , pour ne pas avoir trop de mal . Voici la commande d'installation sur linux  :
   sudo apt-get install libsdl2-dev. Pour ce qui ne sont pas sous linux , télécharger une machine virtuel (virtualbox par exemple) , toutefois il est possible d'installer la SDL sur d'autre système que linux , mais bon c'est un peu compliqué bizarement .Nous avons essayé de rendre notre projet dynamique de telle sorte qu'une autre machine est besoin d'installer la SDL , mais élasse nous n'avons pas réussi , c'est possible commencez par çà si vous volez avancez sans plus vite sans problème ,en tout cas au niveau de l'entête de la SDL.
   
+ NB : Le code concernant l'interface graphique (les fonctionnalités du menu) est sur le fichier display_text.c
+  
   
   #  installation de sdl2_ttf :
   L'installation de la SDL_ttf et de la SDL_image n'est pas trop difficile si on a bien compris celle de la SDL. Pour installer la SDL_ttf sur linux, il faut taper la commande suivante : sudo apt-get install libsdl2-dev libsdl2-ttf-dev . Pour la sdl_image, la commande est : sudo apt-get install libsdl2-dev libsdl2-image-dev La SDL_ttf permet d'écrire du texte sur notre fenêtre et la SDL_image permet d'afficher des images sur la fenêtre. NB : Il ne faut pas oublier d'inclure ces bibliothèques dans le fichier include.h qui se trouve dans le fichier include ou bien de les mettre simplement au niveau de l'entête de notre fichier.c, par exemple #include <SDL_ttf.h>. On peut installer ces fonctionnalités à partir du site Web de SDL: https://www.libsdl.org/projects/SDL_image/ pour la SDL_image et https://www.libsdl.org/projects/SDL_ttf/ pour la SDL_ttf.
