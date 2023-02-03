@@ -1,12 +1,15 @@
 #ifndef INIT_DRAW_H
 #define INIT_DRAW_H
 
+application fenetre_menu();
+application white_window();
 void input(void);
 int SDL_ErrorQuit(const char *message) ;
 application dessine_plateau(application app) ;
 application prepareScene(application app ) ;
 void presentScene(application app ) ;
 application initSDL(void) ;
+
 application dessin_plateau(application app) ;
 application dessin_chevalet (application app);
 application dessin_tuile(application app,int nb);
@@ -24,5 +27,6 @@ int nextTurn(int ot, int nbj);
 int isMyTurn(int t, int idJoueur);
 app_che pioche(int nb, app_che ac);
 void initReserve();
+
 
 #endif 
