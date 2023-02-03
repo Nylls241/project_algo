@@ -2,6 +2,7 @@
 
 int main(void) 
 {
-	
+	execution();
+	// implemente_rummikub();
 	return 0 ;
 }

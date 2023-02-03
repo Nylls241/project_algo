@@ -513,8 +513,8 @@ char *execution()
                 case SDL_MOUSEBUTTONDOWN :
                     if (137 <= event.button.x && event.button.x<= 663 && 600<= event.button.y &&event.button.y<= 650)
                     {
-                        printf("<<<<<------ Vous avez clique sur le bouton COMMENCER ------>>>>>");
-                        //fenetre_menu();
+                        //printf("<<<<<------ Vous avez clique sur le bouton COMMENCER ------>>>>>");
+                        implemente_rummikub();
                     }
                     else if (137 <= event.button.x && event.button.x<= 663 && 670<= event.button.y &&event.button.y<= 720)
                     {
